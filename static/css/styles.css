@@ -288,7 +288,7 @@ img {
 
 @media screen and (max-width: 850px) {
     img {
-        width: 90%;
+        width: 100%;
         padding:10px 10px;
     }
 
@@ -342,7 +342,6 @@ img {
         width: 100%;
         height: 2px;
         background-color: #333333;
-        transition: all 0.5s;
     }
 
     .hamburger span::before {
@@ -357,6 +356,9 @@ img {
 
     input[type="checkbox"]:checked + .hamburger span {
         background-color: transparent;
+        position: fixed;
+        z-index: 6;
+        width: 10%;
     }
 
     input[type="checkbox"]:checked + .hamburger span::before {
@@ -458,6 +460,13 @@ img {
 
     .tab-content img {
         width: 100%;
+    }
+
+    input[type="checkbox"]:checked + .hamburger span {
+        background-color: transparent;
+        position: fixed;
+        z-index: 6;
+        width: 14%;
     }
 }
 
