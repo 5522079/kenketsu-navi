@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>献血ナビ｜献血事業の未来を見据えて</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/styles.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.0/css/all.css">
+
+    <link rel="shortcut icon" href="../static/images/favicons/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="../static/images/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+    <link rel="icon" type="image/png" href="../static/images/favicons/android-chrome-192x192.png" sizes="192x192">
+</head>
+<body>
+    <header>
+        <div class="header-items">
+            <div class="header-item">
+                <div class="header-logo">
+                    <img src="../static/images/kenketu-navi.png" alt="ロゴ画像">
+                </div>
+                <input type="checkbox" id="check" class="hamburger-check">
+                <label for="check" class="hamburger">
+                <span></span>
+                </label>
+                <nav class="nav">
+                    <div class="header-menu">
+                        <!--<li><a class="menu__item" href="#">このサイトについて</a></li>-->
+                        <li><a class="menu__item" href="https://twitter.com/toho_volunteer" target="_blank" rel="noopener noreferrer">TOHOボランティア部について</a></li>
+                        <li><a class="menu__item" href="https://www.jrc.or.jp/donation/" target="_blank" rel="noopener noreferrer">献血について</a></li>
+                        <li><a class="menu__item" href="https://www.noway-form.com/ja/f/67a48750-b9a1-4f7f-aec1-0d07d2bd0a06" target="_blank" rel="noopener noreferrer">お問い合わせ</a></li>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div class="base">
+        <div class="base-body">
+            <div class="body-heads">
+                <div class="body-head">
+                    <h1 class="body-title">未来のために、今献血を考える</h1>
+                    <p>当サイトは日本赤十字社のデータを元に、2014年から最新の2024年までのデータを学習したAIにより3か月先の献血者数の予測し、適切なタイミングでの献血をサポートします。また、都道府県ごとのリアルタイムな献血状況を視覚的に示すカラーリングマップも掲載し、より正確な情報を把握できます。私たち東邦大学TOHOボランティア部は献血のボランティア活動を通して、過不足のない血液供給に貢献することを目指しています。</p>
+                </div>
+            </div>
+            <div class="body-contents">
+                <div class="body-content">
+                <div class="content-ai">
+                    <h2 class="ai-title">献血者数予測AI</h2>
+                    <p>このモデルは、時系列データの分析に基づき3か月先までの全国の総献血者数の予測します。過去数年間の献血データから、季節性、傾向、およびその他の特徴を分析し、これらのパターンを使用して献血者数を予測します。</p>
+                    <div class="graph">
+                        <img src="../static/images/data/model_graph.png" alt="グラフ">
+                    </div>
+                </div>
+                </div>
+                <div class="body-content">
+                    <div class="content-map">
+                        <h2 class="map-title">現在の献血状況<span class="update_date"> ({{date}}更新)</span></h2>
+                        <p class="title-description">日本赤十字社のデータを元に、現在の献血状況を都道府県ごとにカラーリングしています。それぞれの色の意味は以下の通りです。</p>
+                        <div class="color-descriptions">
+                            <div class="color-description">
+                                <img src="../static/images/status_0.png">
+                                <p>患者さんに届けるために必要な血液量の確保ができています。</p>
+                            </div>
+                            <div class="color-description">
+                                <img src="../static/images/status_1.png">
+                                <p>患者さんに届けるために必要な血液量の確保が今後心配な状況です。</p>
+                            </div>
+                            <div class="color-description">
+                                <img src="../static/images/status_2.png">
+                                <p>患者さんに届けるために必要な血液量の確保が困難な状況です。</p>
+                            </div>
+                            <div class="color-description">
+                                <img src="../static/images/status_3.png">
+                                <p>至急ご協力をお願いします。</p>
+                            </div>
+                        </div>
+                        <div class="tab-wrap">
+                            <input id="TAB-01" type="radio" name="TAB" class="tab-switch" checked="checked" /><label class="tab-label" for="TAB-01">400mL献血</label>
+                            <div class="tab-content">
+                                <div class="tab-wrap-in">
+                                    <input id="TAB02-01" type="radio" name="TAB02" class="tab-switch" checked="checked" /><label class="tab-label" for="TAB02-01">A型</label>
+                                    <div class="tab-content">
+                                        <img src="../static/images/data/map_400-a.png" alt="グラフ">
+                                    </div>
+                                    <input id="TAB02-02" type="radio" name="TAB02" class="tab-switch" /><label class="tab-label" for="TAB02-02">O型</label>
+                                    <div class="tab-content">
+                                        <img src="../static/images/data/map_400-o.png" alt="グラフ">
+                                    </div>
+                                    <input id="TAB02-03" type="radio" name="TAB02" class="tab-switch" /><label class="tab-label" for="TAB02-03">B型</label>
+                                    <div class="tab-content">
+                                        <img src="../static/images/data/map_400-b.png" alt="グラフ">
+                                    </div>
+                                    <input id="TAB02-04" type="radio" name="TAB02" class="tab-switch" /><label class="tab-label" for="TAB02-04">AB型</label>
+                                    <div class="tab-content">
+                                        <img src="../static/images/data/map_400-ab.png" alt="グラフ">
+                                    </div>
+                                </div>
+                            </div>
+                            <input id="TAB-02" type="radio" name="TAB" class="tab-switch" /><label class="tab-label" for="TAB-02">200mL献血</label>
+                            <div class="tab-content">
+                                <div class="tab-wrap-in">
+                                    <input id="TAB02-05" type="radio" name="TAB02" class="tab-switch" /><label class="tab-label" for="TAB02-05">A型</label>
+                                    <div class="tab-content">
+                                        <img src="../static/images/data/map_200-a.png" alt="グラフ">
+                                    </div>
+                                    <input id="TAB02-06" type="radio" name="TAB02" class="tab-switch" /><label class="tab-label" for="TAB02-06">O型</label>
+                                    <div class="tab-content">
+                                        <img src="../static/images/data/map_200-o.png" alt="グラフ">
+                                    </div>
+                                    <input id="TAB02-07" type="radio" name="TAB02" class="tab-switch" /><label class="tab-label" for="TAB02-07">B型</label>
+                                    <div class="tab-content">
+                                        <img src="../static/images/data/map_200-b.png" alt="グラフ">
+                                    </div>
+                                    <input id="TAB02-08" type="radio" name="TAB02" class="tab-switch" /><label class="tab-label" for="TAB02-08">AB型</label>
+                                    <div class="tab-content">
+                                        <img src="../static/images/data/map_200-ab.png" alt="グラフ">
+                                    </div>
+                                </div>
+                            </div>
+                            <input id="TAB-03" type="radio" name="TAB" class="tab-switch" /><label class="tab-label" for="TAB-03">成分献血</label>
+                            <div class="tab-content">
+                                <div class="tab-wrap-in">
+                                    <input id="TAB02-09" type="radio" name="TAB02" class="tab-switch" /><label class="tab-label" for="TAB02-09">A型</label>
+                                    <div class="tab-content">
+                                        <img src="../static/images/data/map_com-a.png" alt="グラフ">
+                                    </div>
+                                    <input id="TAB02-10" type="radio" name="TAB02" class="tab-switch" /><label class="tab-label" for="TAB02-10">O型</label>
+                                    <div class="tab-content">
+                                        <img src="../static/images/data/map_com-o.png" alt="グラフ">
+                                    </div>
+                                    <input id="TAB02-11" type="radio" name="TAB02" class="tab-switch" /><label class="tab-label" for="TAB02-11">B型</label>
+                                    <div class="tab-content">
+                                        <img src="../static/images/data/map_com-b.png" alt="グラフ">
+                                    </div>
+                                    <input id="TAB02-12" type="radio" name="TAB02" class="tab-switch" /><label class="tab-label" for="TAB02-12">AB型</label>
+                                    <div class="tab-content">
+                                        <img src="../static/images/data/map_com-ab.png" alt="グラフ">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-ites">
+            <ul class="footer-item">
+<!--
+                <li><a href="#" class="qiita-article" target="_blank" rel="noopener noreferrer">このサイトについて（技術記事）</a></li>
+                <li><a href="https://www.jrc.or.jp/donation/blood/data/" target="_blank" rel="noopener noreferrer">使用しているデータ</a></li>
+                <li><a href="#" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+-->
+            </ul>
+        </div>
+        <p class="copyright">©2024 献血ナビ</p>
+    </footer>
+</body>
+</html>
