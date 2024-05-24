@@ -157,6 +157,12 @@ body {
     font-weight: bold;
 }
 
+.content-map {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .map-title {
     border-bottom: 1px solid transparent;
     border-image: linear-gradient(to right, #FE3939, #FE3939 33%, #CCCCCC 33%, #CCCCCC 100%);

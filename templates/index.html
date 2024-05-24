@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name ="viewport" content="width=device-width">
     <meta name="description" content="2014年から最新の2024年までのデータを学習したAIにより3か月先の献血者数の予測し、適切なタイミングでの献血をサポートします。また、正確な情報を把握できるように都道府県ごとのリアルタイムな献血状況を併せて掲載しています。">
-    <meta name="keywords" content="献血,献血状況,血液在庫,献血事業,献血者数,献血データ,献血者数の予測,献血者数の推移,献血のタイミング,時系列予測,予測モデル,AI">\
+    <meta name="keywords" content="献血,献血状況,血液在庫,献血事業,献血者数,献血データ,献血者数の予測,献血者数の推移,献血のタイミング,時系列予測,予測モデル,AI">
     <title>献血ナビ｜献血事業の未来を見据えて</title>
     <link rel="stylesheet" type="text/css" href="../static/css/styles.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.0/css/all.css">
@@ -33,7 +33,7 @@
                 <nav class="nav">
                     <div class="header-menu">
                         <!--<li><a class="menu__item" href="#">このサイトについて</a></li>-->
-                        <li><a class="menu__item" href="https://twitter.com/toho_volunteer" target="_blank" rel="noopener noreferrer">TOHOボランティア部について</a></li>
+                        <li><a class="menu__item" href="https://www.bs.jrc.or.jp/ktks/chiba/supporter/m5_04_page.html" target="_blank" rel="noopener noreferrer">千葉県学生献血推進協議会について</a></li>
                         <li><a class="menu__item" href="https://www.jrc.or.jp/donation/" target="_blank" rel="noopener noreferrer">献血について</a></li>
                         <li><a class="menu__item" href="https://www.noway-form.com/ja/f/67a48750-b9a1-4f7f-aec1-0d07d2bd0a06" target="_blank" rel="noopener noreferrer">お問い合わせ</a></li>
                     </div>
@@ -46,7 +46,7 @@
             <div class="body-heads">
                 <div class="body-head">
                     <h1 class="body-title">未来のために、今献血を考える</h1>
-                    <p>当サイトは日本赤十字社のデータを元に、2014年から最新の2024年までのデータを学習したAIにより3か月先の献血者数の予測し、適切なタイミングでの献血をサポートします。また、都道府県ごとのリアルタイムな献血状況を視覚的に示すカラーリングマップも掲載し、より正確な情報を把握できます。私たち東邦大学TOHOボランティア部は献血のボランティア活動を通して、過不足のない血液供給に貢献することを目指しています。</p>
+                    <p>当サイトは日本赤十字社のデータを元に、2014年から最新の2024年までのデータを学習したAIにより3か月先の献血者数の予測し、適切なタイミングでの献血をサポートします。また、都道府県ごとのリアルタイムな献血状況を視覚的に示すカラーリングマップも掲載し、より正確な情報を把握できます。千葉県学生献血推進協議会では献血のボランティア活動を通して、過不足のない血液供給に貢献することを目指しています。</p>
                 </div>
             </div>
             <div class="body-contents">
@@ -59,13 +59,13 @@
                     </div>
                     <div class="pred-description">
                         <h3 class="pred-description-ttl">予測データについて</h3>
-                        <p>献血者数は徐々に減少傾向にあります。最新のデータでは、2024年5月は2023年5月に比べて約5,000人、2024年6月は約2,000人少なくなると予測されています。前年同期との比較でも、2024年5月と6月はそれぞれ約7,000人、5,000人少なくなると予測されて います。この減少傾向が続くと、将来的に献血不足に陥る可能性があります。献血者の皆様のご協力をぜひお願い申し上げます。</p>
+                        <p>{{ content }}</p>
                     </div>
                 </div>
                 </div>
                 <div class="body-content">
                     <div class="content-map">
-                        <h2 class="map-title">現在の献血状況<span class="update_date"> ({{date}}更新)</span></h2>
+                        <h2 class="map-title">現在の献血状況<span class="update_date"> ({{ date }}更新)</span></h2>
                         <p class="title-description">日本赤十字社のデータを元に、現在の献血状況を都道府県ごとにカラーリングしています。それぞれの色の意味は以下の通りです。</p>
                         <div class="color-descriptions">
                             <div class="color-description">
