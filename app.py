@@ -17,7 +17,6 @@ def load_comment():
         comment = txtfile.read()
         return comment
 
-
 @app.route('/')
 def index():
     update_date = load_log()
