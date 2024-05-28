@@ -3,7 +3,7 @@ from matplotlib import pyplot as plt
 import japanize_matplotlib
 
 # CSVファイルを読み込む
-file_path = "C:\\PJD\\BloodDonation\\data\\BloodDonation.csv"
+file_path = "../data/BloodDonation.csv"
 df = pd.read_csv(file_path)
 
 # year列とmonth列を結合してdate列を作成
