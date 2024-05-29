@@ -23,9 +23,8 @@
                 </label>
                 <nav class="nav">
                     <div class="header-menu">
-                        <li><a class="menu__item" href="#">このサイトについて</a></li>
-                        <li><a class="menu__item" href="https://twitter.com/toho_volunteer" target="_blank" rel="noopener noreferrer">TOHOボランティア部について</a></li>
-                        <li><a class="menu__item" href="https://www.jrc.or.jp/donation/" target="_blank" rel="noopener noreferrer">献血について</a></li>
+                        <li><a class="menu__item" href="#bout-site">このサイトについて</a></li>
+                        <li><a class="menu__item" href="#about-bd">献血について</a></li>
                         <li><a class="menu__item" href="https://www.noway-form.com/ja/f/67a48750-b9a1-4f7f-aec1-0d07d2bd0a06" target="_blank" rel="noopener noreferrer">お問い合わせ</a></li>
                     </div>
                 </nav>
@@ -36,12 +35,37 @@
         <div class="base-body">
             <div class="body-heads">
                 <div class="body-head">
-                    <h1 class="body-title">このサイトについて</h1>
+                    <h1 class="body-title" id="about-site">このサイトについて</h1>
+                    <p class="about-title-content">私は大学のサークル活動の一環として献血ボランティアに参加し、日本の献血状況を目の当たりにしました。血液は人工的につくることができず、また、長期保存が困難であるため、必要な時に必要な量の血液を確保するのが難しく、しばしば供給不足や過剰が発生してしまいます。
+                        このような状況を解決し、過不足のない血液供給を実現するために、献血者数を予測するAIの制作を思い立ちました。</p>
                 </div>
             </div>
             <div class="body-contents">
                 <div class="body-content">
-                    <h2 class="data-title">使用しているデータ</h2>
+                    <h2 class="about-title"　id="about-bd">献血について</h2>
+                        <p class="about-title-content">
+                            献血とは、病気やけがなどで輸血が必要な人々の命を救うために、健康な人が自らの血液を無償で提供するボランティアです。
+                            血液は人工的につくることができず、また、長い期間保存することもできません。そのため、皆さまの献血が輸血医療を支えています。
+                            詳細な情報や献血の条件、予約方法などについては、日本赤十字社の公式ウェブサイトをご覧ください。日本赤十字社のサイトには、最新の情報やQ&A、献血ルームの所在地などが掲載されています。
+                            <br>
+                            日本赤十字社の公式サイト：<a class="jrc-link" href="https://www.jrc.or.jp/donation/first/" target="_blank" rel="noopener noreferrer">初めて献血される方へ</a>
+                            &emsp;|&emsp;
+                            <a class="jrc-link" href="https://www.jrc.or.jp/donation/about/" target="_blank" rel="noopener noreferrer">献血の流れ</a>
+                            &emsp;|&emsp;
+                            <a class="jrc-link" href="https://www.jrc.or.jp/donation/first/flow/" target="_blank" rel="noopener noreferrer">血液のゆくえ</a>
+                            &emsp;|&emsp;
+                            <a class="jrc-link" href="https://www.jrc.or.jp/donation/first/knowledge/" target="_blank" rel="noopener noreferrer">血液の基礎知識</a>
+                        </p>
+                </div>
+            </div>
+            <div class="body-contents">
+                <div class="body-content">
+                    <h2 class="about-title" id="about-data">使用しているデータについて</h2>
+                    <p class="about-title-content">
+                        予測AIの学習に日本赤十字社の献血者数の速報値のデータを使用しています。
+                        <br>
+                        日本赤十字社の公式サイト：<a class="jrc-link" href="https://www.jrc.or.jp/donation/blood/data/" target="_blank" rel="noopener noreferrer">数値で見る血液事業</a>
+                    </p>
                 </div>
             </div>
         </div>
@@ -49,9 +73,11 @@
     <footer>
         <div class="footer-ites">
             <ul class="footer-item">
-                <li><a href="#" class="qiita-article" target="_blank" rel="noopener noreferrer">このサイトについて（技術記事）</a></li>
-                <li><a href="https://www.jrc.or.jp/donation/blood/data/" target="_blank" rel="noopener noreferrer">使用しているデータ</a></li>
+                <li><a href="aboutsite.html#about-data">使用しているデータについて</a></li>
+<!--
+                <li><a href="#" target="_blank" rel="noopener noreferrer">このサイトについて（技術記事）</a></li>
                 <li><a href="#" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+-->
             </ul>
         </div>
         <p class="copyright">©2024 献血ナビ</p>

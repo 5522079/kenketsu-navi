@@ -119,11 +119,30 @@ body {
     width: 100%;
 }
 
-.data-title {
+.about-title {
     border-bottom: 1px solid transparent;
     border-image: linear-gradient(to right, #FE3939, #FE3939 33%, #CCCCCC 33%, #CCCCCC 100%);
     border-image-slice: 3;
     width: 100%;
+}
+
+.about-title-content {
+    padding-left: 10px;
+    padding-top: 15px;
+    width: 95%;
+}
+
+.jrc-link {
+    text-decoration: underline;
+    color: #0031D8;
+}
+
+a[target="_blank"]:after {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 600;
+    font-size: .8rem;
+    content: "\f35d";
+    margin: 0 0 0 5px;
 }
 
 .content-ai {
