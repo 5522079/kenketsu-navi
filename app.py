@@ -23,5 +23,9 @@ def index():
     comment = load_comment()
     return render_template('index.html', date=update_date, content=comment)
 
+@app.route('/aboutsite')
+def aboutsite():
+    return render_template('aboutsite.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
