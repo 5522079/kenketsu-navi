@@ -140,7 +140,6 @@ body {
 a[target="_blank"]:after {
     font-family: "Font Awesome 5 Free";
     font-weight: 600;
-    font-size: .8rem;
     content: "\f35d";
     margin: 0 0 0 5px;
 }
