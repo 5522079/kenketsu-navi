@@ -6,3 +6,5 @@ matplotlib
 japanize_matplotlib
 statsmodels
 japanmap
+python-dotenv
+google-generativeai
