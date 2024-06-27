@@ -1,6 +1,9 @@
 import pandas as pd
 from matplotlib import pyplot as plt
 import japanize_matplotlib
+import os
+from dotenv import load_dotenv
+import google.generativeai as genai
 
 # CSVファイルを読み込む
 file_path = "../data/BloodDonation.csv"
@@ -24,7 +27,7 @@ train = grouped_date_total
 
 # 学習
 from statsmodels.tsa.statespace.sarimax import SARIMAX
-sarima_model = SARIMAX(train, order=(1, 0, 1), seasonal_order=(1, 1, 1, 10))
+sarima_model = SARIMAX(train, order=(0, 1, 0), seasonal_order=(0, 1, 0, 12))
 sarima_fit = sarima_model.fit()
 
 # 予測
@@ -64,3 +67,52 @@ plt.grid(axis='y')
 # グラフを保存
 plt.savefig('../static/images/data/model_graph.png')
 plt.close()
+
+### Gemini-Proで予測結果の概要を説明 ###
+
+# .envファイルの読み込み
+load_dotenv()
+
+# API-KEYの設定
+GOOGLE_API_KEY=os.getenv('GOOGLE_API_KEY')
+genai.configure(api_key=GOOGLE_API_KEY)
+
+model = genai.GenerativeModel("gemini-pro")
+
+predict_data = 'd'
+latest_data = 'd'
+a_year_ago_data = 'd'
+
+prompt = f'''
+あなたはプロのデータサイエンティストです。
+我々は3か月先までの献血者数を予測し、予測結果をWebサイトに掲載しています。
+そこで、過去のデータや最新のデータと比較して、具体的な数値を用いて200字程度でWebサイトを訪れた人に分析結果を説明してください。
+ただし、以下の内容は絶対に説明に含めないでください。
+・献血の重要性についての説明
+・献血をしてもらえるようにお願いすること
+・積極的な献血啓発活動の宣言
+・献血支援に対する感謝
+・MarkDown形式での説明
+
+ではこれからデータについて説明します。
+
+----------------予測データ----------------
+{predict_data}
+------------------------------------------------
+
+
+----------------最新のデータ-----------------
+{latest_data}
+------------------------------------------------
+
+
+----------------12か月前のデータ-------------
+{a_year_ago_data}
+------------------------------------------------
+データ説明は以上です。
+'''
+
+response = model.generate_content(prompt)
+
+with open("../data/comment.txt", "w", encoding="utf-8") as f:
+    f.write(response.text)
