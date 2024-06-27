@@ -79,10 +79,6 @@ genai.configure(api_key=GOOGLE_API_KEY)
 
 model = genai.GenerativeModel("gemini-pro")
 
-predict_data = 'd'
-latest_data = 'd'
-a_year_ago_data = 'd'
-
 prompt = f'''
 あなたはプロのデータサイエンティストです。
 我々は3か月先までの献血者数を予測し、予測結果をWebサイトに掲載しています。
@@ -97,7 +93,7 @@ prompt = f'''
 ではこれからデータについて説明します。
 
 ----------------予測データ----------------
-{predict_data}
+{model_data}
 ------------------------------------------------
 
 
@@ -107,7 +103,7 @@ prompt = f'''
 
 
 ----------------12か月前のデータ-------------
-{a_year_ago_data}
+{bar_data}
 ------------------------------------------------
 データ説明は以上です。
 '''
@@ -116,3 +112,7 @@ response = model.generate_content(prompt)
 
 with open("../data/comment.txt", "w", encoding="utf-8") as f:
     f.write(response.text)
+
+print(bar_data)
+print(latest_data)
+print(model_data)
