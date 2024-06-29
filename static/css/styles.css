@@ -443,7 +443,6 @@ img {
     
     .menu__item {
         padding: 20px 0;
-        float: right;
         display: flex;
     }
 
