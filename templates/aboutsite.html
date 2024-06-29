@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name ="viewport" content="width=device-width">
-    <meta name="description" content="2014年から最新の2024年までのデータを学習したAIにより3か月先の献血者数の予測し、適切なタイミングでの献血をサポートします。また、正確な情報を把握できるように都道府県ごとのリアルタイムな献血状況を併せて掲載しています。">
+    <meta name="description" content="2017年から最新の2024年までのデータを学習したAIにより3か月先の献血者数の予測し、適切なタイミングでの献血をサポートします。また、正確な情報を把握できるように都道府県ごとのリアルタイムな献血状況を併せて掲載しています。">
     <meta name="keywords" content="献血,献血状況,血液在庫,献血事業,献血者数,献血データ,献血者数の予測,献血者数の推移,献血のタイミング,時系列予測,予測モデル,AI">
     <title>献血ナビ｜このサイトについて</title>
     <link rel="stylesheet" type="text/css" href="../static/css/styles.css">
@@ -38,8 +38,21 @@
             <div class="body-heads">
                 <div class="body-head">
                     <h1 class="body-title" id="about-site">このサイトについて</h1>
-                    <p class="about-title-content">私は大学のサークル活動の一環として献血ボランティアに参加し、日本の献血状況を目の当たりにしました。血液は人工的につくることができず、また、長期保存が困難であるため、必要な時に必要な量の血液を確保するのが難しく、しばしば供給不足や過剰が発生してしまいます。
-                        このような状況を解決し、過不足のない血液供給を実現するために、献血者数を予測するAIの制作を思い立ちました。</p>
+                    <p class="about-title-content">当サイトのご利用にあたっては、以下の内容をご確認いただき、ご承諾いただいたものといたします。また、内容は予告なく変更する場合がありますので、あらかじめご了承ください。</p>
+                </div>
+            </div>
+            <div class="body-contents">
+                <div class="body-content">
+                    <h2 class="about-title" id="about-data">掲載情報について</h2>
+                    <p class="about-title-content">
+                        <ul>
+                            <li class="list">・当サイトは、献血促進を目的としたサイトです。</li>
+                            <li class="list">・当サイトでは、JavaScriptをご使用になれない環境や、無効にしている状態でも閲覧できるように心がけておりますが、ページが予期せぬ表示をする場合がございます。</li>
+                            <li class="list">・当サイトでは、ご利用状況を把握し、より良いコンテンツづくりに役立てることを目的として、Google Analyticsを利用してアクセス解析を行っています。Google Analyticsによって個人情報を特定する情報は取得しておりません。</li>
+                            <li class="list">・当サイトに関するお問い合わせ・ご意見は以下までお寄せください。</li>
+                            <li>&emsp;<a class="jrc-link" href="https://www.noway-form.com/ja/f/67a48750-b9a1-4f7f-aec1-0d07d2bd0a06" target="_blank" rel="noopener noreferrer">お問い合わせ</a></li>
+                        </ul>
+                    </p>
                 </div>
             </div>
             <div class="body-contents">
@@ -70,16 +83,27 @@
                     </p>
                 </div>
             </div>
+            <div class="body-contents">
+                <div class="body-content">
+                    <h2 class="about-title" id="about-data">予測AIについて</h2>
+                    <p class="about-title-content">
+                        当サイトでは、献血者数を予測するためにSARIMA（季節自己回帰移動平均）モデルを使用しています。このモデルは、過去のデータを基に将来の動向を予測するために広く利用されている時系列解析手法です。
+                        「予測AI」という表現は少し広義であり、SARIMAモデルはその一部として活用されています。
+                        <br>
+                        関連リンク：<a class="jrc-link" href="https://www.jrc.or.jp/donation/blood/data/" target="_blank" rel="noopener noreferrer">SARIMAモデルを用いた献血者数の予測について考える（Qiita）</a>
+                        &emsp;|&emsp;
+                        <a class="jrc-link" href="https://github.com/5522079/kenketsu_navi_test" target="_blank" rel="noopener noreferrer">GitHubのリポジトリ</a>
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
     <footer>
         <div class="footer-ites">
             <ul class="footer-item">
-                <li><a href="/aboutsite">使用しているデータについて</a></li>
-<!--
-                <li><a href="#" target="_blank" rel="noopener noreferrer">このサイトについて（技術記事）</a></li>
--->
-                <li><a href="https://github.com/5522079/kenketsu_navi_test" target="_blank" rel="noopener noreferrer">GitHubのリポジトリ</a></li>
+                <li><a class="menu__item" href="/aboutsite">このサイトについて</a></li>
+                <li><a class="menu__item" href="/aboutsite">献血について</a></li>
+                <li><a class="menu__item" href="/aboutsite">使用しているデータについて</a></li>
             </ul>
         </div>
         <p class="copyright">©2024 献血ナビ</p>
