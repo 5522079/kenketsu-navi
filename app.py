@@ -21,7 +21,8 @@ def load_comment():
 def index():
     update_date = load_log()
     comment = load_comment()
-    return render_template('index.html', date=update_date, content=comment)
+    tmp = '（この文章はGeminiProによって自動生成されました。）'
+    return render_template('index.html', date=update_date, content=comment+tmp)
 
 @app.route('/aboutsite')
 def aboutsite():
