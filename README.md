@@ -1,9 +1,7 @@
 # 献血者予測モデル
 
 Qiitaに詳細な内容を記事にしていますのでご覧ください。<br>
-
-本プログラムの予測結果は以下のWebサイトにて公開しています。<br>
-**献血ナビ** : https://kenketsu-navi-test.azurewebsites.net/
+https://qiita.com/5522079/items/8a6b0ceac8d81f053ca1
 
 【プログラム】<br>
 - notebooks　データの分析とモデリングに用いたプログラム<br>
