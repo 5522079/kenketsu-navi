@@ -1,4 +1,4 @@
-# 献血者予測モデル
+# SARIMAモデルを用いた献血者数の予測
 
 Qiitaに詳細な内容を記事にしていますのでご覧ください。<br>
 https://qiita.com/5522079/items/8a6b0ceac8d81f053ca1
