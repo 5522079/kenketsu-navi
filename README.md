@@ -1,7 +1,6 @@
 # SARIMAモデルを用いた献血者数の予測
 
-Qiitaに詳細な内容を記事にしていますのでご覧ください。<br>
-https://qiita.com/5522079/items/8a6b0ceac8d81f053ca1
+[Qiita](https://qiita.com/5522079/items/8a6b0ceac8d81f053ca1)に詳細な内容を記事にしていますのでご覧ください。<br>
 
 【プログラム】<br>
 - notebooks　データの分析とモデリングに用いたプログラム<br>
@@ -24,7 +23,7 @@ BloodDonation.csv　2017年1月からの47都道府県ごとの献血者数
 
 3. prefecture_id
 
-   - 各都道府県に割り当てた固有の識別番号。<br><span style="font-size: small">1 から 47 の値をとります。都道府県番号の早見表は[ここ](https://tundra-bugle-bc4.notion.site/2f462cc8750948878dbfe143640f33ab?pvs=4)。</span>
+   - 各都道府県に割り当てた固有の識別番号。<br><span style="font-size: small">1 から 47 の値をとります。[都道府県番号の早見表](https://tundra-bugle-bc4.notion.site/2f462cc8750948878dbfe143640f33ab?pvs=4)</span>
 
 4. blood_donors
 
