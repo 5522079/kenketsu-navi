@@ -1,0 +1,246 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 16px;
+  background-color: #f4f4f4;
+}
+
+li {
+  text-decoration: none;
+  list-style: none;
+}
+
+a {
+  text-decoration:none;
+}
+
+header {
+  background-color: #fff;
+  padding: 20px 10%;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-items {
+  display: flex;
+}
+
+.header-items a {
+  font-weight: bold;
+  color: #333;
+  float: left;
+  display: flex;
+  text-align: center;
+  padding-left: 15px;
+}
+
+.header-item:hover {
+  color: #FF5050;
+}
+
+.top-wrapper {
+  padding: 0 0 750px 0;
+  background-image: url(../top-wrapper.jpg);
+  background-size: cover;
+  position: relative;
+}
+
+.top-wrapper h1 {
+  position: absolute;
+  bottom: 100px;
+  right: 10%;
+  margin: 0;
+  font-size: 60px;
+  font-weight: normal;
+  color: #fff;
+}
+
+.main-content {
+  width: 80%;
+  margin: 40px auto;
+}
+
+.main-content h1 {
+  padding: 70px 0;
+  color: #4E4A6A;
+  text-align: center;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-family: "Noto Sans JP";
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 5.76px;
+}
+
+.service {
+  display: flex;
+  flex-wrap: wrap; /* 小さい画面では折り返すように */
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.service .box {
+  background-color: #fff;
+  flex-basis: 30%;
+  text-align: center;
+  border: 1px solid #ccc;
+  box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  max-width: 600px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.service .image-container {
+  height: 50%;
+}
+
+.service .image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.service .box h2 {
+  color: #4E496A;
+  font-size: 22px;
+}
+
+.service .box p {
+  color: #333;
+  margin: 20px 25px;
+}
+
+.topics {
+  display: flex;
+  flex-direction: column;
+}
+
+.topics .box {
+  background-color: #fff;
+  padding: 20px;
+  text-align: center;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+  box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.25);
+  height: 200px;
+}
+
+.topics .box:last-child {
+  margin-bottom: 0;
+}
+
+.topics .box h2 {
+  color: #4E496A;
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+
+.topics .box p {
+  color: #333;
+}
+
+.about-us .box {
+  background-color: #fff;
+  padding: 20px;
+  text-align: center;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+  box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.25);
+  height: 500px;
+  overflow: hidden;
+}
+
+.about-us p {
+  font-size: 14px;
+  color: #333;
+  padding: 20px 60px;
+}
+
+.about-us .image-container img {
+  width: 80%;
+  height: 80%;
+  max-width: 600px;
+  max-height: 300px;
+  object-fit: cover;
+}
+
+.about-us-more {
+  font-size: 18px;
+  font-weight: bold;
+  color: #4E496A;
+  text-decoration: underline; /* 下線を追加 */
+}
+
+.about-us-more:hover {
+  color: #FF5050;
+}
+
+footer {
+  background-color: #4E496A;
+  position: relative;
+  bottom: 0;
+  padding: 20px 20px 2px 20px;
+  height: 200px;
+  width: 100%;
+}
+
+.footer-item {
+  display: inline-block;
+  align-items: center;
+  color: #F2F2F2;
+  padding: 10px 20px;
+}
+
+.copyright {
+  text-align: center;
+  color: #F2F2F2;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+}
+
+@media screen and (max-width: 768px) {
+  .top-wrapper {
+    padding: 0;
+    background-image: url(../top-wrapper.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: relative;
+    height: 100vh;
+    min-height: 400px;
+  }
+  
+  .top-wrapper h1 {
+    position: absolute;
+    bottom: 10%;
+    right: 10%;
+    margin: 0;
+    font-size: 10vw; /* ビューポートに応じた文字サイズ */
+    font-weight: normal;
+    color: #fff;
+  }
+
+  .service {
+    flex-direction: column; /* 縦に並べる */
+    align-items: center;
+  }
+
+  .service .box {
+    flex-basis: 100%;
+    max-width: 90%;
+    margin-bottom: 20px;
+  }
+}
