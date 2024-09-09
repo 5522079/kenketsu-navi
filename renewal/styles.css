@@ -48,7 +48,7 @@ header {
 
 .top-wrapper {
   padding: 0 0 750px 0;
-  background-image: url(../top-wrapper.jpg);
+  background-image: url(images/top-wrapper.jpg);
   background-size: cover;
   position: relative;
 }
@@ -159,21 +159,21 @@ header {
   border: 1px solid #ccc;
   margin-bottom: 20px;
   box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.25);
-  height: 500px;
+  height: 600%;
   overflow: hidden;
 }
 
 .about-us p {
   font-size: 14px;
   color: #333;
-  padding: 20px 60px;
+  margin: 20px 25px;
 }
 
 .about-us .image-container img {
-  width: 80%;
-  height: 80%;
-  max-width: 600px;
-  max-height: 300px;
+  width: 100%;
+  height: 100%;
+  max-width: 500px;
+  max-height: 500px;
   object-fit: cover;
 }
 
@@ -214,7 +214,7 @@ footer {
 @media screen and (max-width: 768px) {
   .top-wrapper {
     padding: 0;
-    background-image: url(../top-wrapper.jpg);
+    background-image: url(images/top-wrapper.jpg);
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
