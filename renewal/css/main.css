@@ -6,7 +6,7 @@
 
 body {
   font-family: 'Noto Sans JP', sans-serif;
-  font-size: 16px;
+  font-size: 15px;
   background-color: #f4f4f4;
 }
 
@@ -48,7 +48,7 @@ header {
 
 .top-wrapper {
   padding: 0 0 750px 0;
-  background-image: url(images/top-wrapper.jpg);
+  background-image: url(../images/top-wrapper.jpg);
   background-size: cover;
   position: relative;
 }
@@ -70,9 +70,8 @@ header {
 
 .main-content h1 {
   padding: 70px 0;
-  color: #4E4A6A;
+  color: rgba(238, 73, 73, 255);
   text-align: center;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   font-family: "Noto Sans JP";
   font-size: 36px;
   font-style: normal;
@@ -110,12 +109,14 @@ header {
 .service .image-container img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  padding-top: 10px;
 }
 
 .service .box h2 {
-  color: #4E496A;
-  font-size: 22px;
+  color: #333;
+  font-size: 20px;
+  font-weight: 500;
 }
 
 .service .box p {
@@ -143,8 +144,9 @@ header {
 }
 
 .topics .box h2 {
-  color: #4E496A;
-  font-size: 22px;
+  color: #333;
+  font-size: 20px;
+  font-weight: 500;
   margin-bottom: 15px;
 }
 
@@ -164,7 +166,6 @@ header {
 }
 
 .about-us p {
-  font-size: 14px;
   color: #333;
   margin: 20px 25px;
 }
@@ -179,17 +180,17 @@ header {
 
 .about-us-more {
   font-size: 18px;
-  font-weight: bold;
-  color: #4E496A;
+  font-weight: 500;
+  color: #333;
   text-decoration: underline; /* 下線を追加 */
 }
 
 .about-us-more:hover {
-  color: #FF5050;
+  color: rgba(238, 73, 73, 255);
 }
 
 footer {
-  background-color: #4E496A;
+  background-color: rgba(238, 73, 73, 255);
   position: relative;
   bottom: 0;
   padding: 20px 20px 2px 20px;
@@ -214,7 +215,7 @@ footer {
 @media screen and (max-width: 768px) {
   .top-wrapper {
     padding: 0;
-    background-image: url(images/top-wrapper.jpg);
+    background-image: url(../images/top-wrapper.jpg);
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -242,5 +243,10 @@ footer {
     flex-basis: 100%;
     max-width: 90%;
     margin-bottom: 20px;
+  }
+
+  .service .image-container img {
+    max-height: 140px;
+    object-fit: scale-down;
   }
 }

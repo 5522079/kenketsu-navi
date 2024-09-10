@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>献血ナビ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <link rel="stylesheet" href="css/subsub.css">
+    <script type="text/javascript">
+        $(function(){
+            var countElm = $('.count'),
+                duration = 2000; // 2秒でカウントアップを完了させる
+
+            countElm.each(function(){
+                var self = $(this),
+                    countMax = parseFloat(self.attr('data')), // data-numから最大値を取得
+                    thisCount = 0, // 初期値
+                    frameRate = 60, // 1秒間に60フレーム（約16msごとに更新）
+                    totalFrames = (duration / 1000) * frameRate, // 2秒間に何回更新するか
+                    increment = countMax / totalFrames, // 1フレームごとの増加量
+                    countTimer;
+
+                function timer() {
+                    countTimer = setInterval(function(){
+                        thisCount += increment; // 増加量を追加
+                        self.text(Math.floor(thisCount)); // 表示は整数にする
+
+                        if (thisCount >= countMax) { // カウントが最大値を超えたら終了
+                            self.text(countMax); // 最終値を正確に表示
+                            clearInterval(countTimer);
+                        }
+                    }, 1000 / frameRate); // 毎秒60回更新
+                }
+                timer();
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <img src="images/logo.png" alt="Image description" />
+        <div class="header-items">
+            <li><a class="header-item" href="#">このサイトについて</a></li>
+            <li><a class="header-item" href="#">お問い合わせ</a></li>
+        </div>
+    </header>
+    <ol class="breadcrumb">
+        <li><a href="/">TOP</a></li>
+        <li><a href="/.../">全国</a></li>
+        <li>現在のページ</li>
+    </ol>
+    <div class="main-content">
+        <h1>献血者数予測AI</h1>
+        <section class="predict">
+            <div class="box">
+                <p>私たちは当サイトの運営を通じて、過不足のない献血供給に貢献できることを目指しています。</p>
+                <canvas id="lineChart"></canvas>
+                <script>
+                    var ctx = document.getElementById('lineChart').getContext('2d');
+                    var data1 = [10, 20, 30];  // 青色の線のデータ
+                    var data2 = [10, 20, 30, 40];  // 赤色の線のデータ
+                    
+                    var myChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August'],
+                            datasets: [
+                                {
+                                    label: 'real',
+                                    data: data1,
+                                    borderColor: 'orange',  // 最初の部分
+                                    tension: 0.1
+                                },
+                                {
+                                    label: 'predict',
+                                    data: data2,
+                                    borderColor: 'lightblue',  // 途中から
+                                    tension: 0.1,
+                                    pointRadius: 0
+                                }
+                            ]
+                        },
+                        options: {
+                            responsive: true,
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            },
+                            elements: {
+                                line: {
+                                    borderJoinStyle: 'round'  // 2本の線が自然につながるようにする
+                                }
+                            }
+                        }
+                    });
+                </script>
+            </div>
+        </section>
+        <h1>現在の献血状況</h1>
+        <section class="status">
+            <div class="box">
+                <h2>400mL</h2>
+                <div class="inner-box-container">
+                    <div class="inner-box">
+                        <p class="status-type">A型</p>
+                        <p>非常に困っています</p>
+                    </div>
+                    <div class="inner-box">
+                        <p class="status-type">O型</p>
+                        <p>非常に困っています</p>
+                    </div>
+                    <div class="inner-box">
+                        <p class="status-type">B型</p>
+                        <p>非常に困っています</p>
+                    </div>
+                    <div class="inner-box">
+                        <p class="status-type">AB型</p>
+                        <p>安心です</p>
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <h2>200mL</h2>
+                <div class="inner-box-container">
+                    <div class="inner-box">
+                        <p class="status-type">A型</p>
+                        <p>非常に困っています</p>
+                    </div>
+                    <div class="inner-box">
+                        <p class="status-type">O型</p>
+                        <p>非常に困っています</p>
+                    </div>
+                    <div class="inner-box">
+                        <p class="status-type">B型</p>
+                        <p>非常に困っています</p>
+                    </div>
+                    <div class="inner-box">
+                        <p class="status-type">AB型</p>
+                        <p>安心です</p>
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <h2>成分献血</h2>
+                <div class="inner-box-container">
+                    <div class="inner-box">
+                        <p class="status-type">A型</p>
+                        <p>非常に困っています</p>
+                    </div>
+                    <div class="inner-box">
+                        <p class="status-type">O型</p>
+                        <p>非常に困っています</p>
+                    </div>
+                    <div class="inner-box">
+                        <p class="status-type">B型</p>
+                        <p>非常に困っています</p>
+                    </div>
+                    <div class="inner-box">
+                        <p class="status-type">AB型</p>
+                        <p>安心です</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <h1>数字で見る献血事業</h1>
+        <section class="data">
+            <div class="box">
+                <h2>これまで献血に協力していただいた人数</h2>
+                <div class="image-container">
+                    <img src="images/data-people.png" alt="Image description" />
+                </div>
+                <p><span class="count" data="10000997">0</span>人</p>
+            </div>
+            <div class="box">
+                <h2>これまでに献血された血液の総量</h2>
+                <div class="image-container">
+                    <img src="images/data-blood.png" alt="Image description" />
+                </div>
+                <p><span class="count" data="132454500">0</span>L</p>
+            </div>
+            <div class="box">
+                <h2>献血ルームの総数</h2>
+                <div class="image-container">
+                    <img src="images/data-room.png" alt="Image description" />
+                </div>
+                <p><span class="count" data="100">0</span>箇所</p>
+            </div>
+        </section>
+    </div>
+    <footer>
+    <ul class="footer-items">
+        <li><a class="footer-item" href="#">このサイトについて</a></li>
+        <li><a class="footer-item" href="#">お問い合わせ</a></li>
+        <li><a class="footer-item" href="#">使用しているデータについて</a></li>
+    </ul>
+        <p class="copyright">© 2024 献血ナビ</p>
+    </footer>
+</body>
+</html>
