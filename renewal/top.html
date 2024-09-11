@@ -9,11 +9,26 @@
 </head>
 <body>
     <header>
-      <img src="images/logo.png" alt="Image description" />
-        <div class="header-items">
-          <li><a class="header-item" href="#">このサイトについて</a></li>
-          <li><a class="header-item" href="#">お問い合わせ</a></li>
-        </div>
+    <img src="images/logo.png" alt="Image description" />
+    <div class="header-items">
+            <ul>
+                <li><a class="header-item" href="#">このサイトについて</a></li>
+                <li><a class="header-item" href="#">お問い合わせ</a></li>
+            </ul>
+            <div class="hamburger-menu">
+                <input type="checkbox" id="overlay-input" />
+                <label for="overlay-input" id="overlay-button">
+                <span></span>
+                </label>
+                <div id="overlay">
+                    <ul>
+                        <li><a href="#">トップページ</a></li>
+                        <li><a href="#">このサイトについて</a></li>
+                        <li><a href="#">お問い合わせ</a></li>
+                    </ul>
+                </div>
+            </div>
+    </div>
     </header>
     <div class="top-wrapper">
       <h1>未来のために、<br>今献血を考える</h1>

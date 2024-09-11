@@ -6,13 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap" rel="stylesheet">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="css/sub.css">
+    <link rel="stylesheet" href="css/main.css">
     <script type="text/javascript" src="scripts/counter.js"></script>
     <script type="text/javascript" src="scripts/jmap.js"></script>
     <script type = "text/javascript">
         $(document).ready(function() {
             $('#pred-map').jmap({
-                skew: '5',
                 showHeatmap: true,
                 heatmapLabelUnit: '人',
                 heatmapType: 'HRed',
@@ -75,7 +74,6 @@
     <script type = "text/javascript">
         $(document).ready(function() {
             $('#status-map').jmap({
-                skew: '5',
                 showHeatmap: true,
                 heatmapLabelUnit: '人',
                 heatmapType: 'HRed',
@@ -169,17 +167,32 @@
     <header>
         <img src="images/logo.png" alt="Image description" />
         <div class="header-items">
-            <li><a class="header-item" href="#">このサイトについて</a></li>
-            <li><a class="header-item" href="#">お問い合わせ</a></li>
+                <ul>
+                    <li><a class="header-item" href="#">このサイトについて</a></li>
+                    <li><a class="header-item" href="#">お問い合わせ</a></li>
+                </ul>
+                <div class="hamburger-menu">
+                    <input type="checkbox" id="overlay-input" />
+                    <label for="overlay-input" id="overlay-button">
+                    <span></span>
+                    </label>
+                    <div id="overlay">
+                        <ul>
+                            <li><a href="#">トップページ</a></li>
+                            <li><a href="#">このサイトについて</a></li>
+                            <li><a href="#">お問い合わせ</a></li>
+                        </ul>
+                    </div>
+                </div>
         </div>
     </header>
     <ol class="breadcrumb">
         <li><a href="/">TOP</a></li>
-        <!--<li><a href="/.../">2層目</a></li>-->
         <li>全国</li>
     </ol>
     <div class="main-content">
         <h1>献血者数予測AI</h1>
+        <p class="content-detail">(全国 | {{date}}更新)</p>
         <section class="predict">
             <div class="box">
                 <p>私たちは当サイトの運営を通じて、過不足のない献血供給に貢献できることを目指しています。</p>
@@ -191,6 +204,7 @@
             </div>
         </section>
         <h1>現在の献血状況</h1>
+        <p class="content-detail">(全国 | {{date}}更新)</p>
         <section class="status">
             <div class="box">
                 <p>当サイトは献血の啓発活動を行うために開設されました。</p>
@@ -202,6 +216,7 @@
             </div>
         </section>
         <h1>数字で見る献血事業</h1>
+        <p class="content-detail">(全国 | {{date}}更新)</p>
         <section class="data">
             <div class="box">
                 <h2>これまで献血に協力していただいた人数</h2>

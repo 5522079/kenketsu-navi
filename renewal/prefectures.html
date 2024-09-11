@@ -5,6 +5,7 @@
     <title>献血ナビ</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
     <link rel="stylesheet" href="css/subsub.css">
@@ -42,8 +43,23 @@
     <header>
         <img src="images/logo.png" alt="Image description" />
         <div class="header-items">
-            <li><a class="header-item" href="#">このサイトについて</a></li>
-            <li><a class="header-item" href="#">お問い合わせ</a></li>
+                <ul>
+                    <li><a class="header-item" href="#">このサイトについて</a></li>
+                    <li><a class="header-item" href="#">お問い合わせ</a></li>
+                </ul>
+                <div class="hamburger-menu">
+                    <input type="checkbox" id="overlay-input" />
+                    <label for="overlay-input" id="overlay-button">
+                    <span></span>
+                    </label>
+                    <div id="overlay">
+                        <ul>
+                            <li><a href="#">トップページ</a></li>
+                            <li><a href="#">このサイトについて</a></li>
+                            <li><a href="#">お問い合わせ</a></li>
+                        </ul>
+                    </div>
+                </div>
         </div>
     </header>
     <ol class="breadcrumb">
@@ -53,53 +69,58 @@
     </ol>
     <div class="main-content">
         <h1>献血者数予測AI</h1>
+        <p class="content-detail">({{prefecture}} | {{date}}更新)</p>
         <section class="predict">
             <div class="box">
                 <p>私たちは当サイトの運営を通じて、過不足のない献血供給に貢献できることを目指しています。</p>
-                <canvas id="lineChart"></canvas>
-                <script>
-                    var ctx = document.getElementById('lineChart').getContext('2d');
-                    var data1 = [10, 20, 30];  // 青色の線のデータ
-                    var data2 = [10, 20, 30, 40];  // 赤色の線のデータ
-                    
-                    var myChart = new Chart(ctx, {
-                        type: 'line',
-                        data: {
-                            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August'],
-                            datasets: [
-                                {
-                                    label: 'real',
-                                    data: data1,
-                                    borderColor: 'orange',  // 最初の部分
-                                    tension: 0.1
+                    <div class="chart-container">
+                        <canvas id="lineChart"></canvas>
+                        <script>
+                            var ctx = document.getElementById('lineChart').getContext('2d');
+                            var data1 = [10, 20, 30];
+                            var data2 = [10, 20, 30, 40];
+                            
+                            var myChart = new Chart(ctx, {
+                                type: 'line',
+                                data: {
+                                    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August'],
+                                    datasets: [
+                                        {
+                                            label: 'real',
+                                            data: data1,
+                                            borderColor: 'orange',  // 最初の部分
+                                            tension: 0.1
+                                        },
+                                        {
+                                            label: 'predict',
+                                            data: data2,
+                                            borderColor: 'lightblue',  // 途中から
+                                            tension: 0.1,
+                                            pointRadius: 0
+                                        }
+                                    ]
                                 },
-                                {
-                                    label: 'predict',
-                                    data: data2,
-                                    borderColor: 'lightblue',  // 途中から
-                                    tension: 0.1,
-                                    pointRadius: 0
+                                options: {
+                                    responsive: true,
+                                    maintainAspectRatio: false,
+                                    scales: {
+                                        y: {
+                                            beginAtZero: true
+                                        }
+                                    },
+                                    elements: {
+                                        line: {
+                                            borderJoinStyle: 'round'  // 2本の線が自然につながるようにする
+                                        }
+                                    }
                                 }
-                            ]
-                        },
-                        options: {
-                            responsive: true,
-                            scales: {
-                                y: {
-                                    beginAtZero: true
-                                }
-                            },
-                            elements: {
-                                line: {
-                                    borderJoinStyle: 'round'  // 2本の線が自然につながるようにする
-                                }
-                            }
-                        }
-                    });
-                </script>
+                            });
+                        </script>
+                    </div>
             </div>
         </section>
         <h1>現在の献血状況</h1>
+        <p class="content-detail">({{prefecture}} | {{date}}更新)</p>
         <section class="status">
             <div class="box">
                 <h2>400mL</h2>
@@ -166,6 +187,7 @@
             </div>
         </section>
         <h1>数字で見る献血事業</h1>
+        <p class="content-detail">({{prefecture}} | {{date}}更新)</p>
         <section class="data">
             <div class="box">
                 <h2>これまで献血に協力していただいた人数</h2>
