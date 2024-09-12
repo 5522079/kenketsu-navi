@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.0/css/all.css">
-    <link rel="stylesheet" href="css/about.css">
+    <link rel="stylesheet" href="../static/css/about.css">
     <title>献血ナビ</title>
 </head>
 <body>
     <header>
-    <img src="images/logo.png" alt="Image description" />
+    <a href="/"><img src="../static/images/logo.png" alt="Image description" /></a>
     <div class="header-items">
             <ul>
                 <li><a class="header-item" href="#">このサイトについて</a></li>
@@ -23,14 +23,18 @@
                 </label>
                 <div id="overlay">
                     <ul>
-                        <li><a href="#">トップページ</a></li>
-                        <li><a href="#">このサイトについて</a></li>
-                        <li><a href="#">お問い合わせ</a></li>
+                        <li><a href="/">トップページ</a></li>
+                        <li><a href="/about">このサイトについて</a></li>
+                        <li><a href="/about">お問い合わせ</a></li>
                     </ul>
                 </div>
             </div>
     </div>
     </header>
+    <ol class="breadcrumb">
+      <li><a href="/">TOP</a></li>
+      <li>このサイトについて</li>
+    </ol>
     <div class="main-content">
       <h1>このサイトについて</h1>
       <section class="about-this-site">
@@ -54,15 +58,23 @@
       <h1>使用しているデータについて</h1>
       <section class="about-this-site">
           <div class="box">
-            <p>このウェブサイト（以下「当サイト」といいます）のご利用にあたっては、以下の内容をご確認いただき、ご承諾いただいたものといたします。また、内容は予告なく変更する場合がありますので、あらかじめご了承ください。</p>
-            <h2>推奨環境</h2>
+            <h2>予測AIに使用しているデータ</h2>
+            <p>予測AIの学習に日本赤十字社の<span><a class="jrc-link" href="https://www.jrc.or.jp/donation/blood/data/" target="_blank" rel="noopener noreferrer">月献血者数速報値</a></span>を使用しています。</p>
+            <h2>現在の献血状況に使用しているデータ</h2>
+            <p>各地域ごとの赤十字血液センターの公式ウェブサイトより献血状況を取得しています。</p>
+            <li><strong>北海道ブロック</strong> : <span><a class="jrc-link" href="https://www.bs.jrc.or.jp/hkd/hokkaido/index.html" target="_blank" rel="noopener noreferrer">日本赤十字社 北海道赤十字血液センター</a></span></li>
+            <li><strong>東北ブロック</strong> : <span><a class="jrc-link" href="https://www.bs.jrc.or.jp/th/bbc/index.html" target="_blank" rel="noopener noreferrer">日本赤十字社 東北ブロック血液センター</a></span></li>
+            <li><strong>関東甲信越ブロック</strong> : <span><a class="jrc-link" href="https://www.bs.jrc.or.jp/ktks/bbc/index.html" target="_blank" rel="noopener noreferrer">日本赤十字社 関東甲信越ブロック血液センター</a></span></li>
+            <li><strong>近畿ブロック</strong> : <span><a class="jrc-link" href="https://www.bs.jrc.or.jp/kk/bbc/index.html" target="_blank" rel="noopener noreferrer">日本赤十字社 近畿ブロック血液センター</a></span></li>
+            <li><strong>中四国ブロック</strong> : <span><a class="jrc-link" href="https://www.bs.jrc.or.jp/csk/bbc/index.html" target="_blank" rel="noopener noreferrer">日本赤十字社 中四国ブロック血液センター</a></span></li>
+            <li><strong>九州ブロック</strong> : <span><a class="jrc-link" href="https://www.bs.jrc.or.jp/bc9/bbc/index.html" target="_blank" rel="noopener noreferrer">日本赤十字社 九州ブロック血液センター</a></span></li>
           </div>
     </div>
     <footer>
       <ul class="footer-items">
-        <li><a class="footer-item" href="#">このサイトについて</a></li>
-        <li><a class="footer-item" href="#">お問い合わせ</a></li>
-        <li><a class="footer-item" href="#">使用しているデータについて</a></li>
+        <li><a class="footer-item" href="/about">このサイトについて</a></li>
+        <li><a class="footer-item" href="/about">お問い合わせ</a></li>
+        <li><a class="footer-item" href="/about">使用しているデータについて</a></li>
       </ul>
       <p class="copyright">© 2024 献血ナビ</p>
     </footer>

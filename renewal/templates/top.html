@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="../static/css/main.css">
     <title>献血ナビ</title>
 </head>
 <body>
     <header>
-    <img src="images/logo.png" alt="Image description" />
+    <a href="/"><img src="../static/images/logo.png" alt="Image description" /></a>
     <div class="header-items">
             <ul>
-                <li><a class="header-item" href="#">このサイトについて</a></li>
-                <li><a class="header-item" href="#">お問い合わせ</a></li>
+                <li><a class="header-item" href="/about">このサイトについて</a></li>
+                <li><a class="header-item" href="/about">お問い合わせ</a></li>
             </ul>
             <div class="hamburger-menu">
                 <input type="checkbox" id="overlay-input" />
@@ -22,9 +22,9 @@
                 </label>
                 <div id="overlay">
                     <ul>
-                        <li><a href="#">トップページ</a></li>
-                        <li><a href="#">このサイトについて</a></li>
-                        <li><a href="#">お問い合わせ</a></li>
+                        <li><a href="/">トップページ</a></li>
+                        <li><a href="/about">このサイトについて</a></li>
+                        <li><a href="/about">お問い合わせ</a></li>
                     </ul>
                 </div>
             </div>
@@ -36,25 +36,25 @@
     <div class="main-content">
       <h1>SERVICE</h1>
         <section class="service">
-            <div class="box">
+            <div class="box" onClick="window.location.href='/nationwide';" style="cursor: pointer;">
               <div class="image-container">
-                <img src="images/service-ai.png" alt="Image description" />
+                <img src="../static/images/service-ai.png" alt="Image description" />
               </div>
               <h2>献血者数予測AI</h2>
               <p>献血とは、病気の治療や手術で輸血を必要とする人々に命を救うためのボランティアです。</p>
             </div>
-            <div class="box">
+            <div class="box" onClick="window.location.href='/nationwide';" style="cursor: pointer;">
               <div class="image-container">
-                <img src="images/service-map.png" alt="Image description" />
+                <img src="../static/images/service-map.png" alt="Image description" />
               </div>
               <h2>現在の献血状況</h2>
               <p>献血ルームでの献血の流れについて知りましょう。</p>
             </div>
-            <div class="box">
+            <div class="box" onClick="window.location.href='/nationwide';" style="cursor: pointer;">
               <div class="image-container">
-                <img src="images/service-graph.png" alt="Image description" />
+                <img src="../static/images/service-graph.png" alt="Image description" />
               </div>
-              <h2>今までの献血事業</h2>
+              <h2>数字で見る献血</h2>
               <p>AIが3ヶ月先までの献血者数の推移を予測します。</p>
             </div>
         </section>
@@ -78,18 +78,18 @@
             <div class="box">
               <p>私たちは当サイトの運営を通じて、過不足のない献血供給に貢献できることを目指しています。</p>
               <div class="image-container">
-                <img src="images/about-us.jpeg" alt="Image description" />
+                <img src="../static/images/about-us.jpeg" alt="Image description" />
               </div>
-              <a class="about-us-more" href="#">詳しく見る</a>
+              <a class="about-us-more" href="/about">詳しく見る</a>
             </div>
         </section>
     </div>
 
     <footer>
       <ul class="footer-items">
-        <li><a class="footer-item" href="#">このサイトについて</a></li>
-        <li><a class="footer-item" href="#">お問い合わせ</a></li>
-        <li><a class="footer-item" href="#">使用しているデータについて</a></li>
+        <li><a class="footer-item" href="/about">このサイトについて</a></li>
+        <li><a class="footer-item" href="/about">お問い合わせ</a></li>
+        <li><a class="footer-item" href="/about">使用しているデータについて</a></li>
       </ul>
       <p class="copyright">© 2024 献血ナビ</p>
     </footer>
