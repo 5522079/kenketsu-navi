@@ -189,7 +189,7 @@ input[type="checkbox"]:checked ~ #overlay-button span:after {
 }
 
 .main-content {
-  width: 90%;
+  width: 80%;
   margin: 40px auto;
 }
 
@@ -268,13 +268,13 @@ input[type="checkbox"]:checked ~ #overlay-button span:after {
 }
 
 .status .box p {
-    color: #333;
+    color: #fff;
     margin-bottom: 5px;
     font-size: 19px;
 }
 
 .status .box .status-type {
-  color: #333;
+  color: #fff;
   font-size: 17px;
   font-weight: bold;
 }
@@ -319,6 +319,10 @@ input[type="checkbox"]:checked ~ #overlay-button span:after {
     flex-direction: column;
     justify-content: space-between;
     overflow: hidden;
+  }
+
+  .box .box-detail {
+    text-align: left;
   }
   
   .data .image-container {

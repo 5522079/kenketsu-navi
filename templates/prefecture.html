@@ -16,7 +16,7 @@
 
             countElm.each(function(){
                 var self = $(this),
-                    countMax = parseFloat(self.attr('data')), // data-numから最大値を取得
+                    countMax = parseFloat(self.attr('data-count')), // data-numから最大値を取得
                     thisCount = 0, // 初期値
                     frameRate = 60, // 1秒間に60フレーム（約16msごとに更新）
                     totalFrames = (duration / 1000) * frameRate, // 2秒間に何回更新するか
@@ -41,11 +41,11 @@
 </head>
 <body>
     <header>
-        <img src="../static/images/logo.png" alt="Image description" />
+        <a href="/"><img src="../static/images/logo.png" alt="Image description" /></a>
         <div class="header-items">
                 <ul>
-                    <li><a class="header-item" href="#">このサイトについて</a></li>
-                    <li><a class="header-item" href="#">お問い合わせ</a></li>
+                    <li><a class="header-item" href="/about">このサイトについて</a></li>
+                    <li><a class="header-item" href="/about#contact">お問い合わせ</a></li>
                 </ul>
                 <div class="hamburger-menu">
                     <input type="checkbox" id="overlay-input" />
@@ -54,9 +54,9 @@
                     </label>
                     <div id="overlay">
                         <ul>
-                            <li><a href="#">トップページ</a></li>
-                            <li><a href="#">このサイトについて</a></li>
-                            <li><a href="#">お問い合わせ</a></li>
+                            <li><a href="/">トップページ</a></li>
+                            <li><a href="/about">このサイトについて</a></li>
+                            <li><a href="/about#contact">お問い合わせ</a></li>
                         </ul>
                     </div>
                 </div>
@@ -64,44 +64,49 @@
     </header>
     <ol class="breadcrumb">
         <li><a href="/">TOP</a></li>
-        <li><a href="/.../">全国</a></li>
-        <li>現在のページ</li>
+        <li><a href="/nationwide">全国</a></li>
+        <li>{{prefecture_name}}</li>
     </ol>
     <div class="main-content">
         <h1>献血者数予測AI</h1>
-        <p class="content-detail">({{prefecture}} | {{date}}更新)</p>
+        <p class="content-detail">({{prefecture_name}} | {{update}}更新)</p>
         <section class="predict">
             <div class="box">
-                <p>グラフをご覧いただく際の注意点：
-                    <br>
-                    縦軸（Y軸）のベースラインは500から始まっており、小さな変化でも大きく見える場合があります。データの正確な理解のため、数値そのものも併せてご確認ください。
-                    <br>
-                    ご利用のデバイスによっては、横軸（X軸）の比率が異なり、グラフの見た目に違いが生じることがあります。表示内容にズレがある場合は、PCやタブレットなど、異なるデバイスでご確認いただくことをお勧めします。
-                </p>
+                <p class="box-detail"><strong>グラフをご覧いただく際の注意点：</strong>ご利用のデバイスによっては、グラフの表示に異なるスケールや比率が適用される場合があり、見た目に違いが生じることがあります。</p>
                     <div class="chart-container">
                         <canvas id="lineChart"></canvas>
                         <script>
                             var ctx = document.getElementById('lineChart').getContext('2d');
-                            var data1 = [10, 20, 30];
-                            var data2 = [10, 20, 30, 40];
-                            
+                            var months = {{ months | tojson }};
+                            var data1 = {{ data1 | tojson }};
+                            var data2 = {{ data2 | tojson }};
+                            var data3 = data1.slice(-3);
+                            var lastThreeMonths = months.slice(-3);
                             var myChart = new Chart(ctx, {
-                                type: 'line',
+                                type: 'bar',
                                 data: {
-                                    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August'],
+                                    labels: months,
                                     datasets: [
                                         {
-                                            label: 'real',
-                                            data: data1,
-                                            borderColor: 'orange',  // 最初の部分
-                                            tension: 0.1
+                                            label: '予測献血者数',
+                                            type: 'line',
+                                            data: [...Array(months.length - 3).fill(null), ...data3],
+                                            borderColor: '#073365',
+                                            borderWidth: 4,
                                         },
                                         {
-                                            label: 'predict',
+                                            label: '今年の献血者数',
+                                            type: 'line',
+                                            data: data1,
+                                            borderColor: '#f7581d',
+                                        },
+                                        {
+                                            label: '昨年の献血数',
+                                            type: 'bar',
                                             data: data2,
-                                            borderColor: 'lightblue',  // 途中から
-                                            tension: 0.1,
-                                            pointRadius: 0
+                                            backgroundColor: '#ede8e4',
+                                            borderColor: '#ede8e4',
+                                            borderWidth: 1
                                         }
                                     ]
                                 },
@@ -112,11 +117,6 @@
                                         y: {
                                             beginAtZero: true
                                         }
-                                    },
-                                    elements: {
-                                        line: {
-                                            borderJoinStyle: 'round'  // 2本の線が自然につながるようにする
-                                        }
                                     }
                                 }
                             });
@@ -125,103 +125,103 @@
             </div>
         </section>
         <h1>現在の献血状況</h1>
-        <p class="content-detail">({{prefecture}} | {{date}}更新)</p>
+        <p class="content-detail">({{prefecture_name}} | {{update}}更新)</p>
         <section class="status">
             <div class="box">
                 <h2>400mL</h2>
                 <div class="inner-box-container">
-                    <div class="inner-box">
+                    <div class="inner-box" style="background-color: {{a4_col}};">
                         <p class="status-type">A型</p>
-                        <p>非常に困っています</p>
+                        <p>{{a4}}</p>
                     </div>
-                    <div class="inner-box">
+                    <div class="inner-box" style="background-color: {{o4_col}};">
                         <p class="status-type">O型</p>
-                        <p>非常に困っています</p>
+                        <p>{{o4}}</p>
                     </div>
-                    <div class="inner-box">
+                    <div class="inner-box" style="background-color: {{b4_col}};">
                         <p class="status-type">B型</p>
-                        <p>非常に困っています</p>
+                        <p>{{b4}}</p>
                     </div>
-                    <div class="inner-box">
+                    <div class="inner-box" style="background-color: {{ab4_col}};">
                         <p class="status-type">AB型</p>
-                        <p>安心です</p>
+                        <p>{{ab4}}</p>
                     </div>
                 </div>
             </div>
             <div class="box">
                 <h2>200mL</h2>
                 <div class="inner-box-container">
-                    <div class="inner-box">
+                    <div class="inner-box" style="background-color: {{a2_col}};">
                         <p class="status-type">A型</p>
-                        <p>非常に困っています</p>
+                        <p>{{a2}}</p>
                     </div>
-                    <div class="inner-box">
+                    <div class="inner-box" style="background-color: {{o2_col}};">
                         <p class="status-type">O型</p>
-                        <p>非常に困っています</p>
+                        <p>{{o2}}</p>
                     </div>
-                    <div class="inner-box">
+                    <div class="inner-box" style="background-color: {{b2_col}};">
                         <p class="status-type">B型</p>
-                        <p>非常に困っています</p>
+                        <p>{{b2}}</p>
                     </div>
-                    <div class="inner-box">
+                    <div class="inner-box" style="background-color: {{ab2_col}};">
                         <p class="status-type">AB型</p>
-                        <p>安心です</p>
+                        <p>{{ab2}}</p>
                     </div>
                 </div>
             </div>
             <div class="box">
                 <h2>成分献血</h2>
                 <div class="inner-box-container">
-                    <div class="inner-box">
+                    <div class="inner-box" style="background-color: {{ac_col}};">
                         <p class="status-type">A型</p>
-                        <p>非常に困っています</p>
+                        <p>{{ac}}</p>
                     </div>
-                    <div class="inner-box">
+                    <div class="inner-box" style="background-color: {{oc_col}};">
                         <p class="status-type">O型</p>
-                        <p>非常に困っています</p>
+                        <p>{{oc}}</p>
                     </div>
-                    <div class="inner-box">
+                    <div class="inner-box" style="background-color: {{bc_col}};">
                         <p class="status-type">B型</p>
-                        <p>非常に困っています</p>
+                        <p>{{bc}}</p>
                     </div>
-                    <div class="inner-box">
+                    <div class="inner-box" style="background-color: {{abc_col}};">
                         <p class="status-type">AB型</p>
-                        <p>安心です</p>
+                        <p>{{abc}}</p>
                     </div>
                 </div>
             </div>
         </section>
         <h1>数字で見る献血事業</h1>
-        <p class="content-detail">({{prefecture}} | {{date}}更新)</p>
+        <p class="content-detail">({{prefecture_name}} | {{update}}更新)</p>
         <section class="data">
             <div class="box">
                 <h2>これまで献血に協力していただいた人数</h2>
                 <div class="image-container">
                     <img src="../static/images/data-people.png" alt="Image description" />
                 </div>
-                <p><span class="count" data="10000997">0</span>人</p>
+                <p><span class="count" data-count="{{total_blood_donors}}">0</span>人</p>
             </div>
             <div class="box">
                 <h2>これまでに献血された血液の総量</h2>
                 <div class="image-container">
                     <img src="../static/images/data-blood.png" alt="Image description" />
                 </div>
-                <p><span class="count" data="132454500">0</span>L</p>
+                <p><span class="count" data-count="{{total_blood}}">0</span>kL</p>
             </div>
             <div class="box">
                 <h2>献血ルームの総数</h2>
                 <div class="image-container">
                     <img src="../static/images/data-room.png" alt="Image description" />
                 </div>
-                <p><span class="count" data="100">0</span>箇所</p>
+                <p><span class="count" data-count="{{total_room}}">0</span>箇所</p>
             </div>
         </section>
     </div>
     <footer>
     <ul class="footer-items">
-        <li><a class="footer-item" href="#">このサイトについて</a></li>
-        <li><a class="footer-item" href="#">お問い合わせ</a></li>
-        <li><a class="footer-item" href="#">使用しているデータについて</a></li>
+        <li><a class="footer-item" href="/about">このサイトについて</a></li>
+        <li><a class="footer-item" href="/abbout#contact">お問い合わせ</a></li>
+        <li><a class="footer-item" href="/about#used">使用しているデータについて</a></li>
     </ul>
         <p class="copyright">© 2024 献血ナビ</p>
     </footer>
