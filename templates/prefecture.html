@@ -41,11 +41,11 @@
 </head>
 <body>
     <header>
-        <img src="../static/images/logo.png" alt="Image description" />
+        <a href="/"><img src="../static/images/logo.png" alt="Image description" /></a>
         <div class="header-items">
                 <ul>
                     <li><a class="header-item" href="/about">このサイトについて</a></li>
-                    <li><a class="header-item" href="/about">お問い合わせ</a></li>
+                    <li><a class="header-item" href="/about#contact">お問い合わせ</a></li>
                 </ul>
                 <div class="hamburger-menu">
                     <input type="checkbox" id="overlay-input" />
@@ -56,7 +56,7 @@
                         <ul>
                             <li><a href="/">トップページ</a></li>
                             <li><a href="/about">このサイトについて</a></li>
-                            <li><a href="/about">お問い合わせ</a></li>
+                            <li><a href="/about#contact">お問い合わせ</a></li>
                         </ul>
                     </div>
                 </div>
@@ -72,12 +72,7 @@
         <p class="content-detail">({{prefecture_name}} | {{update}}更新)</p>
         <section class="predict">
             <div class="box">
-                <p>グラフをご覧いただく際の注意点：
-                    <br>
-                    縦軸（Y軸）のベースラインは500から始まっており、小さな変化でも大きく見える場合があります。データの正確な理解のため、数値そのものも併せてご確認ください。
-                    <br>
-                    ご利用のデバイスによっては、横軸（X軸）の比率が異なり、グラフの見た目に違いが生じることがあります。表示内容にズレがある場合は、PCやタブレットなど、異なるデバイスでご確認いただくことをお勧めします。
-                </p>
+                <p class="box-detail"><strong>グラフをご覧いただく際の注意点：</strong>ご利用のデバイスによっては、グラフの表示に異なるスケールや比率が適用される場合があり、見た目に違いが生じることがあります。</p>
                     <div class="chart-container">
                         <canvas id="lineChart"></canvas>
                         <script>
@@ -87,34 +82,30 @@
                             var data2 = {{ data2 | tojson }};
                             var data3 = data1.slice(-3);
                             var lastThreeMonths = months.slice(-3);
-
                             var myChart = new Chart(ctx, {
                                 type: 'bar',
                                 data: {
                                     labels: months,
                                     datasets: [
                                         {
-                                            label: 'Last 3 Data Points',  // data3のラベル
+                                            label: '予測献血者数',
                                             type: 'line',
                                             data: [...Array(months.length - 3).fill(null), ...data3],
-                                            borderColor: 'blue',
+                                            borderColor: '#073365',
                                             borderWidth: 4,
-                                            tension: 0.3
                                         },
                                         {
-                                            label: 'Real Data',
+                                            label: '今年の献血者数',
                                             type: 'line',
                                             data: data1,
-                                            borderColor: 'orange',
-                                            tension: 0.1,
-                                            fill: false  // 塗りつぶしなし
+                                            borderColor: '#f7581d',
                                         },
                                         {
-                                            label: 'Predicted Data',
+                                            label: '昨年の献血数',
                                             type: 'bar',
                                             data: data2,
-                                            backgroundColor: 'lightblue',
-                                            borderColor: 'lightblue',
+                                            backgroundColor: '#ede8e4',
+                                            borderColor: '#ede8e4',
                                             borderWidth: 1
                                         }
                                     ]
@@ -229,8 +220,8 @@
     <footer>
     <ul class="footer-items">
         <li><a class="footer-item" href="/about">このサイトについて</a></li>
-        <li><a class="footer-item" href="/abbout">お問い合わせ</a></li>
-        <li><a class="footer-item" href="/about">使用しているデータについて</a></li>
+        <li><a class="footer-item" href="/abbout#contact">お問い合わせ</a></li>
+        <li><a class="footer-item" href="/about#used">使用しているデータについて</a></li>
     </ul>
         <p class="copyright">© 2024 献血ナビ</p>
     </footer>

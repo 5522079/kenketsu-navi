@@ -173,11 +173,11 @@
 </head>
 <body>
     <header>
-        <img src="../static/images/logo.png" alt="Image description" />
+        <a href="/"><img src="../static/images/logo.png" alt="Image description" /></a>
         <div class="header-items">
                 <ul>
                     <li><a class="header-item" href="/about">このサイトについて</a></li>
-                    <li><a class="header-item" href="/about">お問い合わせ</a></li>
+                    <li><a class="header-item" href="/about#contact">お問い合わせ</a></li>
                 </ul>
                 <div class="hamburger-menu">
                     <input type="checkbox" id="overlay-input" />
@@ -188,7 +188,7 @@
                         <ul>
                             <li><a href="/">トップページ</a></li>
                             <li><a href="/about">このサイトについて</a></li>
-                            <li><a href="/about">お問い合わせ</a></li>
+                            <li><a href="/about#contact">お問い合わせ</a></li>
                         </ul>
                     </div>
                 </div>
@@ -199,7 +199,7 @@
         <li>全国</li>
     </ol>
     <div class="main-content">
-        <h1>献血者数予測AI</h1>
+        <h1 id="predict_ai">献血者数予測AI</h1>
         <p class="content-detail">(全国 | {{date}}更新)</p>
         <section class="predict">
             <div class="box">
@@ -215,7 +215,7 @@
                 </div>
             </div>
         </section>
-        <h1>現在の献血状況</h1>
+        <h1 id="status">現在の献血状況</h1>
         <p class="content-detail">(全国 | {{date}}更新)</p>
         <section class="status">
             <div class="box">
@@ -231,7 +231,7 @@
                 </div>
             </div>
         </section>
-        <h1>数字で見る献血事業</h1>
+        <h1 id="blood_data">数字で見る献血事業</h1>
         <p class="content-detail">(全国 | {{date}}更新)</p>
         <section class="data">
             <div class="box">
@@ -260,8 +260,8 @@
     <footer>
     <ul class="footer-items">
         <li><a class="footer-item" href="/about">このサイトについて</a></li>
-        <li><a class="footer-item" href="/about">お問い合わせ</a></li>
-        <li><a class="footer-item" href="/about">使用しているデータについて</a></li>
+        <li><a class="footer-item" href="/about#contact">お問い合わせ</a></li>
+        <li><a class="footer-item" href="/about#used">使用しているデータについて</a></li>
     </ul>
         <p class="copyright">© 2024 献血ナビ</p>
     </footer>

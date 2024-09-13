@@ -189,7 +189,7 @@ input[type="checkbox"]:checked ~ #overlay-button span:after {
 }
 
 .main-content {
-  width: 90%;
+  width: 80%;
   margin: 40px auto;
 }
 
@@ -319,6 +319,10 @@ input[type="checkbox"]:checked ~ #overlay-button span:after {
     flex-direction: column;
     justify-content: space-between;
     overflow: hidden;
+  }
+
+  .box .box-detail {
+    text-align: left;
   }
   
   .data .image-container {

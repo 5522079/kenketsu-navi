@@ -184,6 +184,49 @@ input[type="checkbox"]:checked ~ #overlay-button span:after {
   color: #fff;
 }
 
+.title {
+  opacity: 0;
+  filter: blur(10px);
+  animation: letter-glow 0.7s 0s ease both, blur 2s 0s ease both;
+  font-size: 200%;
+  animation-delay: 1.5s;
+}
+
+.is-act .title{
+  opacity: 0;
+  filter: blur(10px);
+  animation: letter-glow 0.7s 0s ease both, letter-blur 2s 0s ease both;
+  font-size: 200%;
+  animation-delay: 1.5s;
+}
+
+@keyframes letter-glow{
+  0%   {
+    opacity: 0;
+    text-shadow: 0px 0px 1px rgba(255,255,255,0.1);
+  }
+  55%  {
+    opacity: 1;
+    text-shadow: 0px 0px 20px rgba(255,255,255,0.9);
+  }
+  77%   { opacity: 1;  }
+  100% {
+    opacity:0.7;
+    text-shadow: 0px 0px 20px rgba(255,255,255,0.0);
+  }
+}
+
+  @keyframes blur {
+  0% {
+    opacity: 0;
+    filter: blur(10px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
 .breadcrumb {
   display: flex;
   flex-wrap: wrap;
