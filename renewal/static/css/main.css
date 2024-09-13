@@ -206,7 +206,7 @@ input[type="checkbox"]:checked ~ #overlay-button span:after {
 }
 
 .main-content {
-  width: 90%;
+  width: 80%;
   margin: 40px auto;
 }
 
@@ -405,7 +405,7 @@ input[type="checkbox"]:checked ~ #overlay-button span:after {
   display: flex;
   flex-wrap: wrap; /* 小さい画面では折り返すように */
   justify-content: space-between;
-  margin-bottom: 100px;
+  margin-bottom: 40px;
 }
 
 .data .box {
@@ -441,14 +441,17 @@ input[type="checkbox"]:checked ~ #overlay-button span:after {
 }
 
 .data .box .count {
-  color: #333;
-  font-size: 30px;
-  margin: 20px 15px;
+  color: #FF5050;
+  font-family: "Montserrat", sans-serif;
+  font-size: 3vw;
+  font-weight: 650;
+  font-style: italic;
+  margin: 20px 5px;
 }
 
 .data .box p {
   color: #333;
-  margin: 20px 15px;
+  margin: 20px 8px;
 }
 
 /* ---- prefecture ---- */

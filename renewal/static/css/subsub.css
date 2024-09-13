@@ -268,13 +268,13 @@ input[type="checkbox"]:checked ~ #overlay-button span:after {
 }
 
 .status .box p {
-    color: #333;
+    color: #fff;
     margin-bottom: 5px;
     font-size: 19px;
 }
 
 .status .box .status-type {
-  color: #333;
+  color: #fff;
   font-size: 17px;
   font-weight: bold;
 }
