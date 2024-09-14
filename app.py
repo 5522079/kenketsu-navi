@@ -38,7 +38,7 @@ def pref():
                            months = chart_index, data1 = chart_data[:8], data2 = chart_data[8:])
 
 def calculate(prefecture_id):
-    file_path = "../data/BloodDonation.csv"
+    file_path = "./data/BloodDonation.csv"
     df = pd.read_csv(file_path)
 
     pref_df = df[df['prefecture_id'] == prefecture_id]
@@ -120,7 +120,7 @@ def status(prefecture_name):
         {7: {'沖縄': 47}}
         ]
 
-    with open('../data/BloodStock.csv', 'r') as csvfile:
+    with open('./data/BloodStock.csv', 'r') as csvfile:
         reader = csv.reader(csvfile)
         blood_stock = list(reader)
 
@@ -140,7 +140,7 @@ def status(prefecture_name):
     return status, color
 
 def load_log():
-    with open('../data/log.csv', 'r', newline='', encoding='utf-8') as csvfile:
+    with open('./data/log.csv', 'r', newline='', encoding='utf-8') as csvfile:
         reader = csv.reader(csvfile)
         logs = list(reader)
         date = str(logs[0][0])
