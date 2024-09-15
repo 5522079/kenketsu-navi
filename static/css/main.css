@@ -411,12 +411,6 @@ input[type="checkbox"]:checked ~ #overlay-button span:after {
   padding: 10px 2px;
 }
 
-.jmap-infobox p {
-  text-align: left;
-  margin: 10px 0;
-  z-index: 1;
-}
-
 .status .box {
   background-color: #fff;
   padding: 20px;
@@ -431,7 +425,7 @@ input[type="checkbox"]:checked ~ #overlay-button span:after {
   justify-content: center;
 }
 
-.status .box p {
+.status p {
   color: #333;
   margin: 20px 25px;
 }
@@ -442,6 +436,12 @@ input[type="checkbox"]:checked ~ #overlay-button span:after {
   max-height: 700px;
   max-width: 900px;
   padding: 10px 2px;
+}
+
+.jmap-infobox p {
+  text-align: left;
+  margin: 10px 0;
+  z-index: 1;
 }
 
 .data {
@@ -508,6 +508,7 @@ footer {
   position: relative;
   bottom: 0;
   padding: 20px 20px 2px 20px;
+  margin-top: 200px;
   height: 200px;
   width: 100%;
 }
@@ -602,6 +603,35 @@ footer {
   }
 
   .service .image-container img {
+    max-height: 140px;
+    object-fit: scale-down;
+  }
+
+  .data {
+    flex-direction: column; /* 縦に並べる */
+    align-items: center;
+  }
+
+  .data .box {
+    flex-basis: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .data .box h2 {
+    color: #333;
+    font-size: 17px;
+    font-weight: 500;
+    padding: 15px 15px;
+  }
+
+  .data .box .count {
+    color: #FF5050;
+    font-family: "Montserrat", sans-serif;
+    font-size: 10vw;
+  }
+
+  .data .image-container img {
     max-height: 140px;
     object-fit: scale-down;
   }
