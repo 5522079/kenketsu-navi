@@ -9,6 +9,9 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
     <link rel="stylesheet" href="../static/css/subsub.css">
+    <link rel="shortcut icon" href="../static/images/favicons/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="../static/images/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+    <link rel="icon" type="image/png" href="../static/images/favicons/android-chrome-192x192.png" sizes="192x192">
     <script type="text/javascript">
         $(function(){
             var countElm = $('.count'),
@@ -37,6 +40,15 @@
                 timer();
             });
         });
+    </script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CZJWDEN2W5"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-CZJWDEN2W5');
     </script>
 </head>
 <body>
@@ -126,7 +138,7 @@
         </section>
         <h1>現在の献血状況</h1>
         <p class="content-detail">({{prefecture_name}} | {{update}}更新)</p>
-        <section class="status">
+        <section class="status" id="status">
             <div class="box">
                 <h2>400mL</h2>
                 <div class="inner-box-container">
@@ -191,7 +203,7 @@
                 </div>
             </div>
         </section>
-        <h1>数字で見る献血事業</h1>
+        <h1>数字で見る献血</h1>
         <p class="content-detail">({{prefecture_name}} | {{update}}更新 | ※2017年1月から集計)</p>
         <section class="data">
             <div class="box">
@@ -213,7 +225,7 @@
                 <div class="image-container">
                     <img src="../static/images/data-room.png" alt="Image description" />
                 </div>
-                <p><span class="count" data-count="{{total_room}}">0</span>箇所</p>
+                <p><span class="count" data-count="{{total_rooms}}">0</span>箇所</p>
             </div>
         </section>
     </div>

@@ -66,23 +66,23 @@ def nationwide():
     ]
     update = load_log()
 
-    status_levels = []
+    status_levels, predict_levels = [], []
+    total_donors, total_blood, total_rooms = 0, 0, 0
     for i in range(1, 48):
-        stock, color, level = status(i)
-        status_levels.append(level)
-    status_data = [
-        {"code": area["code"], "name": area["name"], "number": level} for area, level in zip(areas, status_levels)
-    ]
-
-    predict_levels = []
-    for i in range(1, 48):
+        stock, color, level = load_status(i)
         date, data = chart(i)
-        predict_levels.append(100 - (sum(data[5:8])/sum(data[13:])) * 100)
-    predict_data = [
-        {"code": area["code"], "name": area["name"], "number": level} for area, level in zip(areas, predict_levels)
-    ]
+        donors, blood = calculate(i)
+        total_donors += donors
+        total_blood += blood
+        total_rooms += len(load_room(i))
+        status_levels.append(level)
+        predict_levels.append(100 - (sum(data[13:])/sum(data[5:8])) * 100)
+    status_data = [{"code": area["code"], "name": area["name"], "number": level} for area, level in zip(areas, status_levels)]
+    predict_data = [{"code": area["code"], "name": area["name"], "number": level} for area, level in zip(areas, predict_levels)]
 
-    return render_template('nationwide.html', update = update, predict_areas_data = predict_data, status_areas_data = status_data)
+    return render_template('nationwide.html', update = update, predict_areas_data = predict_data, status_areas_data = status_data,
+                           total_blood_donors = total_donors, total_blood = int(total_blood), total_rooms = total_rooms
+                           )
 
 @app.route('/prefecture', methods=['POST'])
 def pref():
@@ -90,10 +90,10 @@ def pref():
     prefecture_name = request.form.get('prefecture_name')
 
     blood_donors, blood = calculate(prefecture_id)
-    stock, color, level = status(prefecture_id)
+    stock, color, level = load_status(prefecture_id)
     chart_index, chart_data = chart(prefecture_id)
+    rooms_detail = load_room(prefecture_id)
     update = load_log()
-    
     return render_template('prefecture.html', prefecture_name=prefecture_name, update = update,
                            a4 = stock[0], o4 = stock[1], b4 = stock[2], ab4 = stock[3],
                            a2 = stock[4], o2 = stock[5], b2 = stock[6], ab2 = stock[7],
@@ -101,7 +101,7 @@ def pref():
                            a4_col = color[0], o4_col = color[1], b4_col = color[2], ab4_col = color[3],
                            a2_col = color[4], o2_col = color[5], b2_col = color[6], ab2_col = color[7],
                            ac_col = color[8], oc_col = color[9], bc_col = color[10], abc_col = color[11],
-                           total_blood_donors = blood_donors, total_blood = blood,
+                           total_blood_donors = blood_donors, total_blood = blood, total_rooms = len(rooms_detail),
                            months = chart_index, data1 = chart_data[:8], data2 = chart_data[8:]
                            )
 
@@ -130,7 +130,7 @@ def chart(prefecture_id):
     
     return chart_data_index, chart_data
 
-def status(prefecture_id):
+def load_status(prefecture_id):
     status_color = {'安心です': '#d65f4e', '心配です': '#fedbc7', '困っています': '#d1e5f0', '非常に困ってます': '#4394c3'}
     status_level = {'安心です': 3, '心配です': 2, '困っています': 1, '非常に困ってます': 0}
     # {block_code : [prefecture_id]}
@@ -173,6 +173,17 @@ def load_log():
         date = str(logs[0][0])
         update_date = re.sub(r'\d{4}-(\d{2})-(\d{2}) \d{2}:\d{2}:\d{2}', lambda x: f"{int(x.group(1))}月{int(x.group(2))}日", date)
     return update_date
+
+def load_room(prefecture_id):
+    with open('./data/BloodRoom.csv', 'r') as csvfile:
+        reader = csv.reader(csvfile)
+        rooms = list(reader)
+
+    rooms_detail = []
+    for room in rooms:
+        if room[0] == str(prefecture_id):
+            rooms_detail.append(room[1:])
+    return rooms_detail
 
 if __name__ == '__main__':
     app.run(debug=True)
