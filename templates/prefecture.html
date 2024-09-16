@@ -9,6 +9,9 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
     <link rel="stylesheet" href="../static/css/subsub.css">
+    <link rel="shortcut icon" href="../static/images/favicons/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="../static/images/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+    <link rel="icon" type="image/png" href="../static/images/favicons/android-chrome-192x192.png" sizes="192x192">
     <script type="text/javascript">
         $(function(){
             var countElm = $('.count'),
@@ -37,6 +40,15 @@
                 timer();
             });
         });
+    </script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CZJWDEN2W5"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-CZJWDEN2W5');
     </script>
 </head>
 <body>
@@ -126,73 +138,73 @@
         </section>
         <h1>現在の献血状況</h1>
         <p class="content-detail">({{prefecture_name}} | {{update}}更新)</p>
-        <section class="status">
+        <section class="status" id="status">
             <div class="box">
                 <h2>400mL</h2>
                 <div class="inner-box-container">
-                    <div class="inner-box" style="background-color: {{a4_col}};">
-                        <p class="status-type">A型</p>
-                        <p>{{a4}}</p>
+                    <div class="inner-box" style="background-color: {{a4_col[0]}};">
+                        <p class="status-type" style="color: {{a4_col[1]}};">A型</p>
+                        <p style="color: {{a4_col[1]}};">{{a4}}</p>
                     </div>
-                    <div class="inner-box" style="background-color: {{o4_col}};">
-                        <p class="status-type">O型</p>
-                        <p>{{o4}}</p>
+                    <div class="inner-box" style="background-color: {{o4_col[0]}};">
+                        <p class="status-type" style="color: {{o4_col[1]}};">O型</p>
+                        <p style="color: {{o4_col[1]}};">{{o4}}</p>
                     </div>
-                    <div class="inner-box" style="background-color: {{b4_col}};">
-                        <p class="status-type">B型</p>
-                        <p>{{b4}}</p>
+                    <div class="inner-box" style="background-color: {{b4_col[0]}};">
+                        <p class="status-type" style="color: {{b4_col[1]}};">B型</p>
+                        <p style="color: {{b4_col[1]}};">{{b4}}</p>
                     </div>
-                    <div class="inner-box" style="background-color: {{ab4_col}};">
-                        <p class="status-type">AB型</p>
-                        <p>{{ab4}}</p>
+                    <div class="inner-box" style="background-color: {{ab4_col[0]}};">
+                        <p class="status-type" style="color: {{ab4_col[1]}};">AB型</p>
+                        <p style="color: {{ab4_col[1]}};">{{ab4}}</p>
                     </div>
                 </div>
             </div>
             <div class="box">
                 <h2>200mL</h2>
                 <div class="inner-box-container">
-                    <div class="inner-box" style="background-color: {{a2_col}};">
-                        <p class="status-type">A型</p>
-                        <p>{{a2}}</p>
+                    <div class="inner-box" style="background-color: {{a2_col[0]}};">
+                        <p class="status-type" style="color: {{a2_col[1]}};">A型</p>
+                        <p style="color: {{a2_col[1]}};">{{a2}}</p>
                     </div>
-                    <div class="inner-box" style="background-color: {{o2_col}};">
-                        <p class="status-type">O型</p>
-                        <p>{{o2}}</p>
+                    <div class="inner-box" style="background-color: {{o2_col[0]}};">
+                        <p class="status-type" style="color: {{o2_col[1]}};">O型</p>
+                        <p style="color: {{o2_col[1]}};">{{o2}}</p>
                     </div>
-                    <div class="inner-box" style="background-color: {{b2_col}};">
-                        <p class="status-type">B型</p>
-                        <p>{{b2}}</p>
+                    <div class="inner-box" style="background-color: {{b2_col[0]}};">
+                        <p class="status-type" style="color: {{b2_col[1]}};">B型</p>
+                        <p style="color: {{b2_col[1]}};">{{b2}}</p>
                     </div>
-                    <div class="inner-box" style="background-color: {{ab2_col}};">
-                        <p class="status-type">AB型</p>
-                        <p>{{ab2}}</p>
+                    <div class="inner-box" style="background-color: {{ab2_col[0]}};">
+                        <p class="status-type" style="color: {{ab2_col[1]}};">AB型</p>
+                        <p style="color: {{ab2_col[1]}};">{{ab2}}</p>
                     </div>
                 </div>
             </div>
             <div class="box">
                 <h2>成分献血</h2>
                 <div class="inner-box-container">
-                    <div class="inner-box" style="background-color: {{ac_col}};">
-                        <p class="status-type">A型</p>
-                        <p>{{ac}}</p>
+                    <div class="inner-box" style="background-color: {{ac_col[0]}};">
+                        <p class="status-type" style="color: {{ac_col[1]}};">A型</p>
+                        <p style="color: {{ac_col[1]}};">{{ac}}</p>
                     </div>
-                    <div class="inner-box" style="background-color: {{oc_col}};">
-                        <p class="status-type">O型</p>
-                        <p>{{oc}}</p>
+                    <div class="inner-box" style="background-color: {{oc_col[0]}};">
+                        <p class="status-type" style="color: {{oc_col[1]}};">O型</p>
+                        <p style="color: {{oc_col[1]}};">{{oc}}</p>
                     </div>
-                    <div class="inner-box" style="background-color: {{bc_col}};">
-                        <p class="status-type">B型</p>
-                        <p>{{bc}}</p>
+                    <div class="inner-box" style="background-color: {{bc_col[0]}};">
+                        <p class="status-type" style="color: {{bc_col[1]}};">B型</p>
+                        <p style="color: {{bc_col[1]}};">{{bc}}</p>
                     </div>
-                    <div class="inner-box" style="background-color: {{abc_col}};">
-                        <p class="status-type">AB型</p>
-                        <p>{{abc}}</p>
+                    <div class="inner-box" style="background-color: {{abc_col[0]}};">
+                        <p class="status-type" style="color: {{abc_col[1]}};">AB型</p>
+                        <p style="color: {{abc_col[1]}};">{{abc}}</p>
                     </div>
                 </div>
             </div>
         </section>
-        <h1>数字で見る献血事業</h1>
-        <p class="content-detail">({{prefecture_name}} | {{update}}更新)</p>
+        <h1>数字で見る献血</h1>
+        <p class="content-detail">({{prefecture_name}} | {{update}}更新 | ※2017年1月から集計)</p>
         <section class="data">
             <div class="box">
                 <h2>これまで献血に協力していただいた人数</h2>
@@ -213,7 +225,7 @@
                 <div class="image-container">
                     <img src="../static/images/data-room.png" alt="Image description" />
                 </div>
-                <p><span class="count" data-count="{{total_room}}">0</span>箇所</p>
+                <p><span class="count" data-count="{{total_rooms}}">0</span>箇所</p>
             </div>
         </section>
     </div>

@@ -2,10 +2,23 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
+    <title>献血ナビ</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.0/css/all.css">
     <link rel="stylesheet" href="../static/css/main.css">
-    <title>献血ナビ</title>
+    <link rel="shortcut icon" href="../static/images/favicons/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="../static/images/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+    <link rel="icon" type="image/png" href="../static/images/favicons/android-chrome-192x192.png" sizes="192x192">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CZJWDEN2W5"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-CZJWDEN2W5');
+    </script>
 </head>
 <body>
     <header>
@@ -41,36 +54,42 @@
                 <img src="../static/images/service-ai.png" alt="Image description" />
               </div>
               <h2>献血者数予測AI</h2>
-              <p>献血とは、病気の治療や手術で輸血を必要とする人々に命を救うためのボランティアです。</p>
+              <p>AIが3ヶ月先までの献血者数の推移を予測します。</p>
             </div>
             <div class="box" onClick="window.location.href='/nationwide#status';" style="cursor: pointer;">
               <div class="image-container">
                 <img src="../static/images/service-map.png" alt="Image description" />
               </div>
               <h2>現在の献血状況</h2>
-              <p>献血ルームでの献血の流れについて知りましょう。</p>
+              <p>最新の血液の在庫情報をまとめています。</p>
             </div>
             <div class="box" onClick="window.location.href='/nationwide#blood_data';" style="cursor: pointer;">
               <div class="image-container">
                 <img src="../static/images/service-graph.png" alt="Image description" />
               </div>
               <h2>数字で見る献血</h2>
-              <p>AIが3ヶ月先までの献血者数の推移を予測します。</p>
+              <p>今までの献血に関するデータを数字でご紹介します。</p>
             </div>
         </section>
         <h1>TOPICS</h1>
         <section class="topics">
             <div class="box">
               <h2>献血について</h2>
-              <p>当サイトは献血の啓発活動を行うために開設されました。</p>
+              <p>献血は、健康な人が無償で血液を提供し、病気やけがで輸血を必要とする患者さんの治療に役立てるボランティア活動です。血液は人工的に作れず、長期間保存もできないため、安定した供給には多くの方の協力が必要です。</p>
+              <a class="jrc-link" href="https://www.jrc.or.jp/donation/" target="_blank" rel="noopener noreferrer">献血について｜日本赤十字社</a>
+              <a class="jrc-link" href="https://www.mhlw.go.jp/stf/newpage_14062.html" target="_blank" rel="noopener noreferrer">献血について｜厚生労働省</a>
             </div>
             <div class="box">
               <h2>献血ができる場所を探す</h2>
-              <p>使用しているデータについての詳細を確認しましょう。</p>
+              <p>献血ルームや献血バスは全国各地にあり、学校や会社帰りに訪れやすい献血ルームや、毎日運行している献血バスの場所を簡単に探すことができます。</p>
+              <a class="jrc-link" href="https://www.jrc.or.jp/about/search/bloodroom/" target="_blank" rel="noopener noreferrer">献血ルームを探す｜日本赤十字社</a>
+              <a class="jrc-link" href="https://www.jrc.or.jp/donation/bus/" target="_blank" rel="noopener noreferrer">献血バスを探す｜日本赤十字社</a>
             </div>
             <div class="box">
               <h2>血液の基礎知識</h2>
-              <p>献血に関するお問い合わせはこちら。</p>
+              <p>献血にご協力いただく前に、血液の基礎知識を知っておくことも大切です。血液の役割や成分について理解することで、献血の重要性がよりわかります。</p>
+              <a class="jrc-link" href="https://www.jrc.or.jp/donation/first/knowledge/" target="_blank" rel="noopener noreferrer">血液の基礎知識｜日本赤十字社</a>
+
             </div>
         </section>
         <h1>ABOUT US</h1>
@@ -80,7 +99,7 @@
               <div class="image-container">
                 <img src="../static/images/about-us.jpeg" alt="Image description" />
               </div>
-              <a class="about-us-more" href="/about#us">詳しく見る</a>
+              <a class="about-more" href="/about#us">詳しく見る</a>
             </div>
         </section>
     </div>
