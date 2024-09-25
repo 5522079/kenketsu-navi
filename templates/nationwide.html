@@ -16,7 +16,7 @@
         $(document).ready(function() {
             $('#pred-map').jmap({
                 showHeatmap: true,
-                showHeatlabel: true,
+                showInfobox: true,
                 heatmapLabelUnit: '%',
                 heatmapConditions: ["<=-6", "<0",  ">=0", ">=6"],
                 heatmapColors: ["#4394c3", "#d1e5f0", "#fedbc7", "#d65f4e"], 
@@ -40,7 +40,7 @@
         $(document).ready(function() {
             $('#status-map').jmap({
                 showHeatmap: true,
-                showHeatlabel: true,
+                showInfobox: true,
                 heatmapConditions: ["<9", ">=9",  ">=18", ">=27"],
                 heatmapColors: ["#4394c3", "#d1e5f0", "#fedbc7", "#d65f4e"], 
                 onSelect: function(e, data) {
@@ -138,6 +138,30 @@
                 <div id="pred-map">
                     <div class="jmap-infobox">
                         <p>地図をクリックすると、「都道府ごとのデータ」がご覧いただけます。</p>
+                        <div class="category">
+                            <div class="color-box increase-large"></div>
+                                <div class="description">
+                                    昨年より5%以上増加の予測
+                                </div>
+                        </div>
+                        <div class="category">
+                            <div class="color-box increase-small"></div>
+                                <div class="description">
+                                    昨年と同等、またはわずかに増加の予測
+                                </div>
+                        </div>
+                        <div class="category">
+                            <div class="color-box decrease-small"></div>
+                                <div class="description">
+                                    昨年よりわずかに減少の予測
+                                </div>
+                        </div>
+                        <div class="category">
+                        <div class="color-box decrease-large"></div>
+                            <div class="description">
+                                昨年より5%以上減少の予測
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -154,6 +178,30 @@
                 <div id="status-map">
                     <div class="jmap-infobox">
                         <p>地図をクリックすると、「都道府ごとのデータ」がご覧いただけます。</p>
+                        <div class="category">
+                            <div class="color-box increase-large"></div>
+                                <div class="description">
+                                    安心です
+                                </div>
+                        </div>
+                        <div class="category">
+                            <div class="color-box increase-small"></div>
+                                <div class="description">
+                                    心配です
+                                </div>
+                        </div>
+                        <div class="category">
+                            <div class="color-box decrease-small"></div>
+                                <div class="description">
+                                    困っています
+                                </div>
+                        </div>
+                        <div class="category">
+                        <div class="color-box decrease-large"></div>
+                            <div class="description">
+                                非常に困ってます
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
