@@ -324,8 +324,7 @@ input[type="checkbox"]:checked ~ #overlay-button span:after {
 
 .topics .box {
   background-color: #fff;
-  padding: 20px;
-  text-align: center;
+  padding: 30px 30px 45px 30px;
   border: 1px solid #ccc;
   margin-bottom: 20px;
   box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.25);
@@ -344,15 +343,17 @@ input[type="checkbox"]:checked ~ #overlay-button span:after {
 
 .topics .box h2 {
   color: #333;
-  font-size: 20px;
+  font-size: 25px;
   font-weight: 500;
-  margin-bottom: 15px;
+  margin: 20px 0 20px 0;
 }
 
 .topics .box p {
   color: #333;
   text-align: left;
   margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: solid 1px #ccc;
 }
 
 .jrc-link {
@@ -464,6 +465,41 @@ a[target="_blank"]:after {
   z-index: 1;
 }
 
+
+.category {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.color-box {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.decrease-large {
+  background-color: #4394c3;
+}
+
+.decrease-small {
+  background-color: #d1e5f0;
+}
+
+.increase-small {
+  background-color: #fedbc7;
+}
+
+.increase-large {
+  background-color: #d65f4e;
+}
+
+.description {
+  font-size: 1em;
+}
+
+
 .data {
   display: flex;
   flex-wrap: wrap; /* 小さい画面では折り返すように */
@@ -538,6 +574,10 @@ footer {
   align-items: center;
   color: #F2F2F2;
   padding: 10px 20px;
+}
+
+.footer-item:hover {
+  color: #333;
 }
 
 .copyright {

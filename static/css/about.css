@@ -280,6 +280,10 @@
       color: #F2F2F2;
       padding: 10px 20px;
     }
+
+    .footer-item:hover {
+      color: #333;
+    }
     
     .copyright {
       text-align: center;
