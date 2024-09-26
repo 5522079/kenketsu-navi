@@ -352,6 +352,8 @@ input[type="checkbox"]:checked ~ #overlay-button span:after {
   color: #333;
   text-align: left;
   margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: solid 1px #ccc;
 }
 
 .jrc-link {
@@ -572,6 +574,10 @@ footer {
   align-items: center;
   color: #F2F2F2;
   padding: 10px 20px;
+}
+
+.footer-item:hover {
+  color: #333;
 }
 
 .copyright {
