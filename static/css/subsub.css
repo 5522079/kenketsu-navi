@@ -216,7 +216,6 @@ input[type="checkbox"]:checked ~ #overlay-button span:after {
 .predict .box {
   background-color: #fff;
   padding: 20px;
-  text-align: center;
   border: 1px solid #ccc;
   margin-bottom: 20px;
   box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.25);
@@ -229,7 +228,7 @@ input[type="checkbox"]:checked ~ #overlay-button span:after {
 
 .predict p {
   color: #333;
-  margin: 20px 25px;
+  margin: 20px 0px;
 }
 
 .chart-container {
@@ -355,6 +354,28 @@ input[type="checkbox"]:checked ~ #overlay-button span:after {
     color: #333;
     margin: 20px 8px;
   }
+
+  .fixed_btn {
+    font-size: 1rem;
+    letter-spacing: 0.12rem;
+    position: fixed;
+    color: #fff;
+    background-color: #FF5050;
+    opacity: 0.96;
+    box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.25);
+    bottom: 30px; 
+    right: 20px;
+    padding: 1rem 1.5rem 1rem 1.5rem;
+    border-radius: 100vh;
+    z-index: 20;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+  
+  .fixed_btn:hover {
+    background-color: #ff7676;
+    transform: scale(1.1); /* ボタンを少し膨らませる */
+  }
+  
   
   footer {
     background-color: rgba(238, 73, 73, 255);
@@ -469,6 +490,14 @@ input[type="checkbox"]:checked ~ #overlay-button span:after {
     .data .image-container img {
       max-height: 140px;
       object-fit: scale-down;
+    }
+
+    .fixed_btn {
+      font-size: 1rem;
+      bottom: 20px; 
+      right: 10px;
+      padding: 0.8rem 1.3rem 0.8rem 1.3rem;
+      border-radius: 100vh;
     }
   }
   
