@@ -2,7 +2,7 @@
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 # More info on Python, GitHub Actions, and Azure App Service: https://aka.ms/python-webapps-actions
 
-name: Build and deploy Python app to Azure Web App - kenketsu-navi-test
+name: Build and deploy Python app to Azure Web App - kenketsu-navi
 
 on:
   push:
@@ -18,7 +18,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Set up Python version
-        uses: actions/setup-python@v1
+        uses: actions/setup-python@v5
         with:
           python-version: '3.9'
 
@@ -36,7 +36,7 @@ jobs:
         run: zip release.zip ./* -r
 
       - name: Upload artifact for deployment jobs
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: python-app
           path: |
@@ -54,7 +54,7 @@ jobs:
 
     steps:
       - name: Download artifact from build job
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: python-app
 
@@ -63,16 +63,16 @@ jobs:
 
       
       - name: Login to Azure
-        uses: azure/login@v1
+        uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_CE94A879B416441E8F295C432AE9AF69 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_0988312AA6F3453397CAE1A93537F184 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_36B2612A96AE415F9E002CADE22AB1D4 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_996C781EA84F42748674E7DF1660FD64 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_29F0A0675A3E4257A7E1F7E4C5FE2F29 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_EC26BF228EEF4793B7376B7908B47636 }}
 
       - name: 'Deploy to Azure Web App'
-        uses: azure/webapps-deploy@v2
+        uses: azure/webapps-deploy@v3
         id: deploy-to-webapp
         with:
-          app-name: 'kenketsu-navi-test'
+          app-name: 'kenketsu-navi'
           slot-name: 'Production'
           
