@@ -80,8 +80,8 @@ def nationwide():
     status_data = [{"code": area["code"], "name": area["name"], "number": level} for area, level in zip(areas, status_levels)]
     predict_data = [{"code": area["code"], "name": area["name"], "number": level} for area, level in zip(areas, predict_levels)]
 
-    return render_template('nationwide.html', update = update, predict_areas_data = predict_data, status_areas_data = status_data,
-                           total_blood_donors = total_donors, total_blood = int(total_blood), total_rooms = total_rooms
+    return render_template('nationwide.html', update=update, predict_areas_data=predict_data, status_areas_data=status_data,
+                           total_blood_donors=total_donors, total_blood=int(total_blood), total_rooms=total_rooms
                            )
 
 @app.route('/prefecture', methods=['POST'])
@@ -94,15 +94,15 @@ def pref():
     chart_index, chart_data = chart(prefecture_id)
     rooms_detail = load_room(prefecture_id)
     update = load_log()
-    return render_template('prefecture.html', prefecture_name=prefecture_name, update = update,
-                           a4 = stock[0], o4 = stock[1], b4 = stock[2], ab4 = stock[3],
-                           a2 = stock[4], o2 = stock[5], b2 = stock[6], ab2 = stock[7],
-                           ac = stock[8], oc = stock[9], bc = stock[10], abc = stock[11],
-                           a4_col = color[0], o4_col = color[1], b4_col = color[2], ab4_col = color[3],
-                           a2_col = color[4], o2_col = color[5], b2_col = color[6], ab2_col = color[7],
-                           ac_col = color[8], oc_col = color[9], bc_col = color[10], abc_col = color[11],
-                           total_blood_donors = blood_donors, total_blood = blood, total_rooms = len(rooms_detail),
-                           months = chart_index, data1 = chart_data[:8], data2 = chart_data[8:]
+    return render_template('prefecture.html', prefecture_name=prefecture_name, update=update,
+                           a4=stock[0], o4=stock[1], b4=stock[2], ab4=stock[3],
+                           a2=stock[4], o2=stock[5], b2=stock[6], ab2=stock[7],
+                           ac=stock[8], oc=stock[9], bc=stock[10], abc=stock[11],
+                           a4_col=color[0], o4_col=color[1], b4_col=color[2], ab4_col=color[3],
+                           a2_col=color[4], o2_col=color[5], b2_col=color[6], ab2_col=color[7],
+                           ac_col=color[8], oc_col=color[9], bc_col=color[10], abc_col=color[11],
+                           total_blood_donors=blood_donors, total_blood=blood, total_rooms=len(rooms_detail),
+                           months=chart_index, data1=chart_data[:8], data2=chart_data[8:]
                            )
 
 def calculate(prefecture_id):
