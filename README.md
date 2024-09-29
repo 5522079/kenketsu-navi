@@ -3,13 +3,13 @@
 [Qiita](https://qiita.com/5522079/items/8a6b0ceac8d81f053ca1)に詳細な内容を記事にしています。<br>
 
 【プログラム】<br>
-- notebooks　データの分析とモデリングに用いたプログラム<br>
-  - visualization.ipynb　生データの可視化と結果の作図<br>
-  - analyze.ipynb　変動成分の分解、定常性検定、相関分析と結果の作図<br>
-  - model.ipynb　SARIMAモデルの構築と評価<br>
+- [notebooks](./notebooks/) :　データの分析とモデリングに用いたプログラム<br>
+  - [visualization.ipynb](./notebooks/visualization.ipynb) :　生データの可視化と結果の作図<br>
+  - [analyze.ipynb](./notebooks/analyze.ipynb) :　変動成分の分解、定常性検定、相関分析と結果の作図<br>
+  - [model.ipynb](./notebooks/model.ipynb) :　SARIMAモデルの構築と評価<br>
 
 【データ】<br>
-BloodDonation.csv　2017年1月からの47都道府県ごとの献血者数
+[BloodDonation.csv](./data/BloodDonation.csv) :　2017年1月からの47都道府県ごとの献血者数
 
 ![image](https://github.com/user-attachments/assets/980fdd2a-f60d-4f1b-81c7-ff6d273791a0)
 
@@ -31,7 +31,7 @@ BloodDonation.csv　2017年1月からの47都道府県ごとの献血者数
 
 2. whole_blood_donation
 
-   - 全血献血の献血者数<br><span style="font-size: small">後述する 200mL 献血者数と 400mL 献血者数の合計。</span>
+   - 全血献血の献血者数<br><span style="font-size: small">200mL 献血者数と 400mL 献血者数の合計。</span>
 
 3. 200mL_blood_donation
 
