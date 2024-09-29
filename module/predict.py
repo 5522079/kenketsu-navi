@@ -1,6 +1,7 @@
+from datetime import datetime
+
 import pandas as pd
 from statsmodels.tsa.statespace.sarimax import SARIMAX
-from datetime import datetime
 
 file_path = "../data/BloodDonation.csv"
 

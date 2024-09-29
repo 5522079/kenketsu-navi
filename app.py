@@ -1,7 +1,8 @@
-from flask import Flask, render_template, request
-import csv
-import pandas as pd
 import re
+import csv
+
+import pandas as pd
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
