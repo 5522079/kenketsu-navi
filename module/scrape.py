@@ -42,13 +42,10 @@ now = datetime.datetime.today()
 new_file_name = str(now.month) + '-' + str(now.day)
 new_file_path = f'../data/BloodStock_{new_file_name}.csv'
 
-file_list = os.listdir('./data')
+file_list = os.listdir('../data')
 for file in file_list:
     if 'BloodStock' in file:
         current_file_name = file
         current_file_path = f'../data/{current_file_name}'
-    else:
-        print('ファイルが見つかりませんでした')
-        current_file_path = '../data/error.csv'
 
 os.rename(current_file_path, new_file_path)

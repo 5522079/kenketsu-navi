@@ -1,4 +1,5 @@
 import re
+import os
 import csv
 
 import pandas as pd
@@ -65,10 +66,11 @@ def nationwide():
             {"code" : 46, "name" : '鹿児島'},
             {"code" : 47, "name" : '沖縄'}
     ]
-    update = load_log()
 
+    update = load_update()
     status_levels, predict_levels = [], []
     total_donors, total_blood, total_rooms = 0, 0, 0
+
     for i in range(1, 48):
         stock, color, level = load_status(i)
         date, data = chart(i)
@@ -78,6 +80,7 @@ def nationwide():
         total_rooms += len(load_room(i))
         status_levels.append(level)
         predict_levels.append(100 - (sum(data[13:])/sum(data[5:8])) * 100)
+
     status_data = [{"code": area["code"], "name": area["name"], "number": level} for area, level in zip(areas, status_levels)]
     predict_data = [{"code": area["code"], "name": area["name"], "number": level} for area, level in zip(areas, predict_levels)]
 
@@ -94,7 +97,8 @@ def pref():
     stock, color, level = load_status(prefecture_id)
     chart_index, chart_data = chart(prefecture_id)
     rooms_detail = load_room(prefecture_id)
-    update = load_log()
+    update = load_update()
+
     return render_template('prefecture.html', prefecture_name=prefecture_name, update=update,
                            a4=stock[0], o4=stock[1], b4=stock[2], ab4=stock[3],
                            a2=stock[4], o2=stock[5], b2=stock[6], ab2=stock[7],
@@ -113,10 +117,11 @@ def calculate(prefecture_id):
     pref_df = df[df['prefecture_id'] == prefecture_id]
     total_blood_donors = sum(pref_df['blood_donors'])
     total_blood = (sum(pref_df['200mL_blood_donation']) * 200 + sum(pref_df['400mL_blood_donation']) * 400) / 1000
+    
     return total_blood_donors, total_blood
 
 def chart(prefecture_id):
-    with open('./data/data_8.csv', 'r') as csvfile:
+    with open('./data/graph.csv', 'r') as csvfile:
         reader = csv.reader(csvfile)
         data = list(reader)
 
@@ -144,8 +149,13 @@ def load_status(prefecture_id):
                        6 : [31, 32, 33, 34, 35, 36, 37, 38, 39], 
                        7 : [40, 41, 42, 43, 44, 45, 46, 47]
                        }
+    
+    file_list = os.listdir('./data')
+    for file in file_list:
+        if 'BloodStock' in file:
+            file_name = file
 
-    with open('./data/BloodStock.csv', 'r') as csvfile:
+    with open(f'./data/{file_name}', 'r') as csvfile:
         reader = csv.reader(csvfile)
         blood_stock = list(reader)
 
@@ -167,13 +177,17 @@ def load_status(prefecture_id):
 
     return status, colors, level
 
-def load_log():
-    with open('./data/log.csv', 'r', newline='', encoding='utf-8') as csvfile:
-        reader = csv.reader(csvfile)
-        logs = list(reader)
-        date = str(logs[0][0])
-        update_date = re.sub(r'\d{4}-(\d{2})-(\d{2}) \d{2}:\d{2}:\d{2}', lambda x: f"{int(x.group(1))}月{int(x.group(2))}日", date)
-    return update_date
+def load_update():
+    file_list = os.listdir('./data')
+    for file in file_list:
+        if 'BloodStock' in file:
+            match = re.search(r'BloodStock_([0-9]{1,2})-([0-9]{1,2})\.csv', file)
+            if match:
+                month = match.group(1)  # 月
+                day = match.group(2)    # 日
+                date = f"{int(month)}月{int(day)}日"
+
+    return date
 
 def load_room(prefecture_id):
     with open('./data/BloodRoom.csv', 'r') as csvfile:

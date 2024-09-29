@@ -40,7 +40,7 @@ for i in range(1, 48):
     donor = donor_data.values.tolist()
     donor.insert(0, i)
 
-    with open('./data_8.csv', mode='a')as csvfile:
+    with open('../data/graph.csv', mode='a')as csvfile:
         if i == 1:
             date = []
             for d in donor_data.index.tolist():
