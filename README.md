@@ -1,6 +1,10 @@
 # SARIMAモデルを用いた献血者数の予測
 
-[Qiita](https://qiita.com/5522079/items/8a6b0ceac8d81f053ca1)に詳細な内容を記事にしています。<br>
+予測結果を以下のサイトで公開しています。<br>
+[献血ナビ](https://kenketsu-navi-bvf7hwdne8gyaqav.japaneast-01.azurewebsites.net/)
+https://kenketsu-navi-bvf7hwdne8gyaqav.japaneast-01.azurewebsites.net/
+
+また、[Qiita](https://qiita.com/5522079/items/8a6b0ceac8d81f053ca1)にプログラムの詳細な内容を記事にしています。<br>
 
 【プログラム】<br>
 - [notebooks](./notebooks/) :　データの分析とモデリングに用いたプログラム<br>
@@ -52,3 +56,5 @@
 7.  PC_blood_donation
 
     - 血小板成分献血者数
+
+これらのデータは[日本赤十字社 数値で見る献血事業](https://www.jrc.or.jp/donation/blood/data/)より取得しています。
