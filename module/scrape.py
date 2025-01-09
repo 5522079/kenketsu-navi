@@ -6,7 +6,19 @@ from bs4 import BeautifulSoup
 import requests
 
 
-file_path = "../data/BloodStock.csv"
+# 最新のファイルを取得
+for file in os.listdir('../data'):
+    if 'BloodStock' in file:
+        current_file_path = f'../data/{file}'
+
+# ファイル名に更新日をつけてリネーム
+now = datetime.datetime.today()
+new_file_name = str(now.month) + '-' + str(now.day)
+new_file_path = f'../data/BloodStock_{new_file_name}.csv'
+
+os.rename(current_file_path, new_file_path)
+
+file_path = new_file_path
 
 sites = [
     {'url':'https://www.bs.jrc.or.jp/hkd/hokkaido/index.html', 'code': 1, 'class': 'center-main-today-types-state'},
@@ -36,16 +48,3 @@ for site in sites:
     target_elements = [element.text for element in soup.find_all(lambda tag: tag.name == 'p' and site['class'] in tag.get('class', [])) if element.text.strip()]
     
     write_to_csv(site['code'], target_elements, file_path)
-
-# ファイル名に更新日をつけてリネーム
-now = datetime.datetime.today()
-new_file_name = str(now.month) + '-' + str(now.day)
-new_file_path = f'../data/BloodStock_{new_file_name}.csv'
-
-file_list = os.listdir('../data')
-for file in file_list:
-    if 'BloodStock' in file:
-        current_file_name = file
-        current_file_path = f'../data/{current_file_name}'
-
-os.rename(current_file_path, new_file_path)
