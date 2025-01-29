@@ -79,7 +79,7 @@ def nationwide():
         total_blood += blood
         total_rooms += len(load_room(i))
         status_levels.append(level)
-        predict_levels.append(100 - (sum(data[13:])/sum(data[5:8])) * 100)
+        predict_levels.append(100 - (sum(data[18:21])/sum(data[5:8])) * 100)
 
     status_data = [{"code": area["code"], "name": area["name"], "number": level} for area, level in zip(areas, status_levels)]
     predict_data = [{"code": area["code"], "name": area["name"], "number": level} for area, level in zip(areas, predict_levels)]
@@ -99,6 +99,9 @@ def pref():
     rooms_detail = load_room(prefecture_id)
     update = load_update()
 
+    # デバッグ用にchart_dataの内容を確認
+    print(chart_data)
+
     return render_template('prefecture.html', prefecture_name=prefecture_name, update=update,
                            a4=stock[0], o4=stock[1], b4=stock[2], ab4=stock[3],
                            a2=stock[4], o2=stock[5], b2=stock[6], ab2=stock[7],
@@ -107,7 +110,7 @@ def pref():
                            a2_col=color[4], o2_col=color[5], b2_col=color[6], ab2_col=color[7],
                            ac_col=color[8], oc_col=color[9], bc_col=color[10], abc_col=color[11],
                            total_blood_donors=blood_donors, total_blood=blood, total_rooms=len(rooms_detail),
-                           months=chart_index, data1=chart_data[:8], data2=chart_data[8:]
+                           months=chart_index, last_year_data=chart_data[0:9], real_data=chart_data[8:13], predict_data=chart_data[13:]
                            )
 
 def calculate(prefecture_id):
@@ -121,17 +124,17 @@ def calculate(prefecture_id):
     return total_blood_donors, total_blood
 
 def chart(prefecture_id):
-    with open('./data/graph.csv', 'r') as csvfile:
+    with open('./data/graph.csv', 'r', encoding="utf-8") as csvfile:
         reader = csv.reader(csvfile)
         data = list(reader)
 
-    tmp = data[0][9:]
+    tmp = data[0][1:9]
     chart_data_index = [re.search(r'-(\d+)', date).group(1) + '月' for date in tmp]
 
     chart_data = []
     for d in data[1:]:
         if d[0] == str(prefecture_id):
-            chart_data.append(d[1:17])
+            chart_data.append(d[1:])
     chart_data = [int(float(value)) for sublist in chart_data for value in sublist]
     
     return chart_data_index, chart_data
@@ -155,7 +158,7 @@ def load_status(prefecture_id):
         if 'BloodStock' in file:
             file_name = file
 
-    with open(f'./data/{file_name}', 'r') as csvfile:
+    with open(f'./data/{file_name}', 'r', encoding="utf-8") as csvfile:
         reader = csv.reader(csvfile)
         blood_stock = list(reader)
 
@@ -190,7 +193,7 @@ def load_update():
     return date
 
 def load_room(prefecture_id):
-    with open('./data/BloodRoom.csv', 'r') as csvfile:
+    with open('./data/BloodRoom.csv', 'r', encoding="utf-8") as csvfile:
         reader = csv.reader(csvfile)
         rooms = list(reader)
 

@@ -13,7 +13,7 @@ for i in range(1, 48):
 
     # 予測期間のデータフレーム
     latest_date = df['date'].max() # 最新の日付を取得
-    start_date = latest_date + pd.DateOffset(months=1) # 予測期間の開始日と終了日を取得
+    start_date = latest_date + pd.DateOffset(months=-4) # 予測期間の開始日と終了日を取得
     end_date = latest_date + pd.DateOffset(months=3)
     future_dates = pd.date_range(start_date, end_date, freq='MS') # 予測期間のインデックスを作成
     model_forecast_result = pd.DataFrame(index=future_dates, columns=['blood_donors'])
@@ -23,8 +23,15 @@ for i in range(1, 48):
     sarima_model = SARIMAX(train, order=(0, 1, 0), seasonal_order=(0, 1, 0, 12))
     sarima_fit = sarima_model.fit()
 
+    # 過去の予測値を取得
+    past_forecast_result = sarima_fit.get_prediction(start=start_date, end=latest_date)
+    past_forecast_mean = past_forecast_result.predicted_mean
+
     # 予測
-    model_forecast_result['blood_donors'] = sarima_fit.forecast(steps=len(model_forecast_result.index))
+    future_forecast_result = sarima_fit.forecast(steps=len(future_dates))
+
+    # 過去の予測値と未来の予測値を結合
+    model_forecast_result['blood_donors'] = past_forecast_mean._append(future_forecast_result)
 
     # 昨年のデータ
     last_year_data = grouped_date_total[-29:-21]
