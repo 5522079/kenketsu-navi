@@ -86,22 +86,20 @@
         <li>{{prefecture_name}}</li>
     </ol>
     <div class="main-content">
-        <h1>献血者数予測AI</h1>
+        <h1>献血者数の予測</h1>
         <p class="content-detail">({{prefecture_name}} | {{update}}更新)</p>
         <section class="predict">
             <div class="box">
-                <p>2017年から2024年までの献血者数の推移を学習したAIが、3か月先までの献血者数を予測し、適切なタイミングでの献血をサポートします。<br>予測誤差をパーセンテージで表す指標であるMAPEは約2%ですが、一定の誤差が含まれる可能性があることにご留意ください。</p>
+                <p>2017年から2024年までの献血者数の推移を学習した予測モデルが、3か月先までの献血者数を予測し、適切なタイミングでの献血をサポートします。<br>予測誤差は約2%ですが、あくまでも予測であり一定の誤差が含まれる可能性があることにご留意ください。</p>
                 <p class="box-detail"><strong>グラフをご覧いただく際の注意点：</strong>ご利用のデバイスによっては、グラフの表示に異なるスケールや比率が適用される場合があり、見た目に違いが生じることがあります。</p>
                     <div class="chart-container">
                         <canvas id="lineChart"></canvas>
                         <script>
                             var ctx = document.getElementById('lineChart').getContext('2d');
                             var months = {{ months | tojson }};
-                            var data1 = {{ data1 | tojson }};
-                            var data2 = {{ data2 | tojson }};
-                            var data3 = data1.slice(-4);
-                            var data1 = data1.slice(0, 5)
-                            var lastThreeMonths = months.slice(-3);
+                            var last_year_data = {{ last_year_data | tojson }};
+                            var real_data = {{ real_data | tojson }};
+                            var predict_data = {{ predict_data | tojson }};
                             var myChart = new Chart(ctx, {
                                 type: 'bar',
                                 data: {
@@ -110,21 +108,22 @@
                                         {
                                             label: '予測献血者数',
                                             type: 'line',
-                                            data: [...Array(months.length - 4).fill(null), ...data3],
+                                            data: predict_data,
                                             borderColor: '#073365',
                                             borderDash: [5, 5],
-                                            borderWidth: 4,
+                                            borderWidth: 2,
                                         },
                                         {
                                             label: '今年の献血者数',
                                             type: 'line',
-                                            data: data1,
+                                            data: real_data,
                                             borderColor: '#f7581d',
+                                            borderWidth: 4,
                                         },
                                         {
                                             label: '昨年の献血数',
                                             type: 'bar',
-                                            data: data2,
+                                            data: last_year_data,
                                             backgroundColor: '#ede8e4',
                                             borderColor: '#ede8e4',
                                             borderWidth: 1
