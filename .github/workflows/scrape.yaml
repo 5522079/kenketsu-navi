@@ -3,7 +3,7 @@ name: scrape
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 15 * * 5"
+    - cron: "0 15 * * 2,5"
 
 jobs:
   Scrape:
@@ -29,8 +29,8 @@ jobs:
 
       - name: commit files
         run: |
-          git config --global user.name "${{ github.actor }}"
-          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add .
           git commit -m 'update'
-          git push origin main
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
