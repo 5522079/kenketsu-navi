@@ -99,8 +99,7 @@ def pref():
     rooms_detail = load_room(prefecture_id)
     update = load_update()
 
-    # デバッグ用にchart_dataの内容を確認
-    print(chart_data)
+    # print(chart_data) # デバッグ用
 
     return render_template('prefecture.html', prefecture_name=prefecture_name, update=update,
                            a4=stock[0], o4=stock[1], b4=stock[2], ab4=stock[3],

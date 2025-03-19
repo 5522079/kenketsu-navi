@@ -1,59 +1,108 @@
-# SARIMAモデルを用いた献血者数の予測
+<div id="top"></div>
 
-予測結果を以下のサイトで公開しています。<br>
-[献血ナビ](https://kenketsu-navi-bvf7hwdne8gyaqav.japaneast-01.azurewebsites.net/)
+# 献血ナビプロジェクト
 
-また、[Qiita](https://qiita.com/5522079/items/8a6b0ceac8d81f053ca1)にプログラムの詳細な内容を記事にしています。<br>
+## 概要
 
-【プログラム】<br>
-- [notebooks](./notebooks/) :　データの分析とモデリングに用いたプログラム<br>
-  - [visualization.ipynb](./notebooks/visualization.ipynb) :　生データの可視化と結果の作図<br>
-  - [analyze.ipynb](./notebooks/analyze.ipynb) :　変動成分の分解、定常性検定、相関分析と結果の作図<br>
-  - [model.ipynb](./notebooks/model.ipynb) :　SARIMAモデルの構築と評価<br>
+このプロジェクトは、献血者数の推移を予測するモデルの開発とWebサイトの運営を通じて、必要な血液量の適切な確保に貢献することを目指しています。
 
-【データ】<br>
-[BloodDonation.csv](./data/BloodDonation.csv) :　2017年1月からの47都道府県ごとの献血者数
+予測結果を[献血ナビ](https://kenketsu-navi-bvf7hwdne8gyaqav.japaneast-01.azurewebsites.net/)で公開しています。また、[Qiita](https://qiita.com/5522079/items/8a6b0ceac8d81f053ca1)にプログラムの詳細な内容を記事にしています。<br>
 
-これらのデータは[日本赤十字社 数値で見る献血事業](https://www.jrc.or.jp/donation/blood/data/)より取得しています。
+## 使用技術
+<p style="display: inline">
+    <img src="https://img.shields.io/badge/-Python-F9DC3E.svg?logo=python&style=flat">
+    <img src="https://img.shields.io/badge/-Jupyter-FFFFFF.svg?logo=jupyter&style=popout">
+    <img src="https://img.shields.io/badge/-sklearn-F37626.svg?logo=&style=popout">
+    <img src="https://img.shields.io/badge/pandas-005d8b?style=flat&logo=pandas&logoColor=fffefe" alt="Badge">
+    <img src="https://img.shields.io/badge/NumPy-1e89c0?style=flat&logo=numpy&logoColor=fffefe" alt="Badge">
+    <img src="https://img.shields.io/badge/-Javascript-F7DF1E.svg?logo=javascript&style=popout">
+    <img src="https://img.shields.io/badge/-Jquery-0769AD.svg?logo=jquery&style=popout">
+    <img src="https://img.shields.io/badge/-HTML5-333.svg?logo=html5&style=flat">
+    <img src="https://img.shields.io/badge/-CSS3-1572B6.svg?logo=css3&style=flat">
+    <img src="https://img.shields.io/badge/-Github%20Actions-181717.svg?logo=github&style=popout">
+    <img src="https://img.shields.io/badge/-Azure-2560E0.svg?logo=azure-pipelines&style=popout">
+</p>
 
-![image](https://github.com/user-attachments/assets/980fdd2a-f60d-4f1b-81c7-ff6d273791a0)
+## 動作環境
+| 言語・フレームワーク  | バージョン |
+| --------------------- | ---------- |
+| Python                | 3.9        |
+| beautifulsoup4        | 4.12.3     |
+| flask                 | 3.0.3      |
+| Jmap                  | 0.0.1      |
+| matplotlib            | 3.8.4      |
+| numpy                 | 1.26.4     |
+| pandas                | 2.2.2      |
+| requests              | 2.32.2     |
+| statsmodels           | 0.14.2     |
 
-1. year
+その他のパッケージのバージョンは [requirements.txt](./requirements.txt) を参照してください。
 
-   - 西暦<br><span style="font-size: small">2017 から 2024 までの値をとる。</span>
+## ディレクトリ構成
+```txt
+./
+├─ .github/                 # GitHub関連の設定ファイルやワークフロー
+├─ data/                    
+│   ├─ BloodDonation.csv    # 献血者数のデータ
+│   ├─ BloodRoom.csv        # 各献血ルームのデータ
+│   ├─ BloodStock_.csv      # 最新の血液在庫データ
+│   └─ graph.csv            # 可視化用に加工されたデータ
+├─ module/                  
+│   ├─ predict.py           # 献血や血液在庫の予測モデル
+│   └─ scrape.py            # スクレイピング用
+├─ notebooks/               
+│   ├─ analyze.ipynb        # 変動成分の分解、定常性検定、相関分析と結果の作図
+│   ├─ model.ipynb          # SARIMAモデルの構築と評価
+│   └─ visualization.ipynb  # データの可視化と結果の作図
+├─ static/                  # 静的ファイル
+│   ├─ css/                 
+│   ├─ images/              
+│   └─ scripts/            
+├─ templates/               # HTMLテンプレートファイル
+├─ app.py                   # Flaskアプリケーションのエントリーポイント
+├─ README.md                
+└─ requirements.txt         # パッケージのリスト
+```
 
-2. month
+## データファイル
+- [BloodDonation.csv](./data/BloodDonation.csv) :　2017年1月からの47都道府県ごとの献血者数
 
-   - 月<br><span style="font-size: small">1 から 12 までの値をとる。</span>
+    これらのデータは[日本赤十字社 数値で見る献血事業](https://www.jrc.or.jp/donation/blood/data/)より取得しています。
 
-3. prefecture_id
+    ![BloodDonation.csv_header](https://github.com/user-attachments/assets/980fdd2a-f60d-4f1b-81c7-ff6d273791a0)
 
-   - 各都道府県に割り当てた固有の識別番号。<br><span style="font-size: small">1 から 47 の値をとる。[都道府県番号の早見表](https://tundra-bugle-bc4.notion.site/2f462cc8750948878dbfe143640f33ab?pvs=4)</span>
+  1. year：西暦<br>
+    2017 から 2025 までの値。
 
-4. blood_donors
+  2. month：月<br>
+    1 から 12 までの値。
 
-   - 総献血者数
+  3. prefecture_id：各都道府県に割り当てた固有の識別番号。<br>
+    1 から 47 の値。各都道府県のコードは[都道府県コードの早見表](https://tundra-bugle-bc4.notion.site/2f462cc8750948878dbfe143640f33ab?pvs=4)を参照してください。
 
-5. whole_blood_donation
+  4. blood_donors：総献血者数
 
-   - 全血献血の献血者数<br><span style="font-size: small">200mL 献血者数と 400mL 献血者数の合計。</span>
+  5. whole_blood_donation：全血献血（200mL・400mL 献血）の献血者数<br>
 
-6. 200mL_blood_donation
+  6. 200mL_blood_donation：200mL 献血者数
 
-   - 200mL 献血者数
+  7. 400mL_blood_donation：400mL 献血者数
 
-7. 400mL_blood_donation
+  8.  component_blood_donation：成分献血（血漿成分・血小板成分献血）の献血者数<br>
 
-   - 400mL 献血者数
+  9.  PPP_blood_donation：血漿成分献血献血者数
 
-8. component_blood_donation
+  10.  PC_blood_donation：血小板成分献血者数
 
-   - 成分献血の献血者数<br><span style="font-size: small">血漿成分献血者数と血小板成分献血者数の合計。</span>
+- [BloodStock_.csv](./data/) :　最新の血液在庫状況
 
-9. PPP_blood_donation
+    各地域ごとの赤十字血液センターの公式ウェブサイトより献血状況を取得しています。
 
-   - 血漿成分献血献血者数
+    北海道ブロック : [日本赤十字社 北海道赤十字血液センター](https://www.bs.jrc.or.jp/hkd/hokkaido/index.html)<br>
+    東北ブロック : [日本赤十字社 東北ブロック血液センター](https://www.bs.jrc.or.jp/th/bbc/index.html)<br>
+    関東甲信越ブロック : [日本赤十字社 関東甲信越ブロック血液センター](https://www.bs.jrc.or.jp/ktks/bbc/index.html)<br>
+    近畿ブロック : [日本赤十字社 近畿ブロック血液センター](https://www.bs.jrc.or.jp/kk/bbc/index.html)<br>
+    中四国ブロック : [日本赤十字社 中四国ブロック血液センター](https://www.bs.jrc.or.jp/csk/bbc/index.html)<br>
+    九州ブロック : [日本赤十字社 九州ブロック血液センター](https://www.bs.jrc.or.jp/bc9/bbc/index.html)<br>
 
-10. PC_blood_donation
-
-    - 血小板成分献血者数
+<p align="right">(<a href="#top">トップへ</a>)</p>
