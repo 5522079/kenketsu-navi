@@ -48,9 +48,9 @@
 │   ├─ BloodStock_.csv      # 最新の血液在庫データ
 │   └─ graph.csv            # 可視化用に加工されたデータ
 ├─ module/                  
-│   ├─ predict.py           # 献血や血液在庫の予測モデル
-│   └─ scrape.py            # スクレイピング用
-├─ notebooks/               
+│   ├─ predict.py           # 献血者数の予測モデル
+│   └─ scrape.py            # 最新の献血在庫のスクレイピング
+├─ notebooks/               # データ分析とモデル検証用ファイル
 │   ├─ analyze.ipynb        # 変動成分の分解、定常性検定、相関分析と結果の作図
 │   ├─ model.ipynb          # SARIMAモデルの構築と評価
 │   └─ visualization.ipynb  # データの可視化と結果の作図
