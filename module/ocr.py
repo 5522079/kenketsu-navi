@@ -16,7 +16,7 @@ endpoint = os.getenv('AZURE_DOCUMENT_INTELLIGENCE_ENDPOINT')
 key = os.getenv('AZURE_DOCUMENT_INTELLIGENCE_KEY')
 model_id = os.getenv('AZURE_DOCUMENT_INTELLIGENCE_MODEL_ID')
 
-target_file_path = "../data/sample03.pdf"
+target_file_path = "../data/row_data.pdf"
 output_file_path = "../data/BloodDonation.csv"
 
 def ocr():
@@ -34,11 +34,11 @@ def ocr():
 
 ###### テスト用 ######
 def save_test_result(result):
-    with open("../output/test_result.pkl", "wb") as result_file:
+    with open("../data/test/test_result.pkl", "wb") as result_file:
         pickle.dump(result, result_file)
         print("resultをtest_result.pklに保存しました")
 
-def load_test_result(file_path="../output/test_result.pkl"):
+def load_test_result(file_path="../data/test/test_result.pkl"):
     with open(file_path, "rb") as result_file:
         return pickle.load(result_file)
 ###### テスト用 ######
