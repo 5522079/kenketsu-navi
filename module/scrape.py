@@ -2,11 +2,11 @@ import os
 import csv
 import datetime
 
-from bs4 import BeautifulSoup
 import requests
+from bs4 import BeautifulSoup
 
 
-# 最新のファイルを取得
+# 既存ファイルを取得
 for file in os.listdir('../data'):
     if 'BloodStock' in file:
         current_file_path = f'../data/{file}'
@@ -18,8 +18,6 @@ new_file_path = f'../data/BloodStock_{new_file_name}.csv'
 
 os.rename(current_file_path, new_file_path)
 
-file_path = new_file_path
-
 sites = [
     {'url':'https://www.bs.jrc.or.jp/hkd/hokkaido/index.html', 'code': 1, 'class': 'center-main-today-types-state'},
     {'url':'https://www.bs.jrc.or.jp/th/bbc/index.html', 'code': 2, 'class': 'block-main-today-types-state'},
@@ -30,16 +28,15 @@ sites = [
     {'url':'https://www.bs.jrc.or.jp/bc9/bbc/index.html', 'code': 7, 'class': 'block-main-today-types-state'}
 ]
 
+header = ['block_code', '400-a', '400-o', '400-b', '400-ab', '200-a', '200-o', '200-b', '200-ab', 'com-a', 'com-o', 'com-b', 'com-ab']
+with open(new_file_path, 'w', newline='', encoding='utf-8') as csvfile:
+    writer = csv.writer(csvfile)
+    writer.writerow(header)
+
 def write_to_csv(code, data, file):
     with open(file, 'a', newline='', encoding='utf-8') as csvfile:
         writer = csv.writer(csvfile)
         writer.writerow([code] + data)
-
-# ヘッダー
-header = ['block_code', '400-a', '400-o', '400-b', '400-ab', '200-a', '200-o', '200-b', '200-ab', 'com-a', 'com-o', 'com-b', 'com-ab']
-with open(file_path, 'w', newline='', encoding='utf-8') as csvfile:
-    writer = csv.writer(csvfile)
-    writer.writerow(header)
 
 # スクレイピング
 for site in sites:
@@ -47,4 +44,4 @@ for site in sites:
     soup = BeautifulSoup(response.content, "html.parser")
     target_elements = [element.text for element in soup.find_all(lambda tag: tag.name == 'p' and site['class'] in tag.get('class', [])) if element.text.strip()]
     
-    write_to_csv(site['code'], target_elements, file_path)
+    write_to_csv(site['code'], target_elements, new_file_path)

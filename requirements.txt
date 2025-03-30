@@ -1,6 +1,12 @@
 Flask
+
 beautifulsoup4
 requests
+pypdf2
+
 pandas
 matplotlib
 statsmodels
+
+python-dotenv
+azure-ai-documentintelligence

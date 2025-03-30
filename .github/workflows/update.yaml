@@ -1,0 +1,48 @@
+name: update
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 6 15 * *"
+
+jobs:
+  Update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.9"
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run download script
+        run: |
+          cd module
+          python download.py
+
+      - name: Run OCR script
+        env:
+          AZURE_DOCUMENT_INTELLIGENCE_ENDPOINT: ${{ secrets.AZURE_DOCUMENT_INTELLIGENCE_ENDPOINT }}
+          AZURE_DOCUMENT_INTELLIGENCE_KEY: ${{ secrets.AZURE_DOCUMENT_INTELLIGENCE_KEY }}
+          AZURE_DOCUMENT_INTELLIGENCE_MODEL_ID: ${{ secrets.AZURE_DOCUMENT_INTELLIGENCE_MODEL_ID }}
+        run: |
+          python ocr.py
+
+      - name: Run prediction script
+        run: |
+          python predict.py
+
+      - name: commit files
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m 'update'
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
