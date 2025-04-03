@@ -13,8 +13,8 @@ row = soup.find("tr")
 pdf = row.find("a", href=True)
 pdf_url = pdf['href']
 if not pdf_url.startswith("https"):
-    pdf_url = '/'.join(site.split('/')[:3]) + pdf_url  # 有効なURLに変換
-    # print(f"Downloading PDF: {pdf_url}")
+    pdf_url = '/'.join(site.split('/')[:3]) + pdf_url
+    # print(f"Downloading PDF: {pdf_url}") # デバッグ用
 
 pdf_response = requests.get(pdf_url)
 if pdf_response.status_code == 200:
@@ -26,7 +26,7 @@ if pdf_response.status_code == 200:
     reader = PdfReader(tmp_pdf)
     writer = PdfWriter()
     writer.add_page(reader.pages[0])
-    first_page_pdf = "../data/row_data.pdf"
+    first_page_pdf = "../data/jrc_blood_donation_report_raw.pdf"
     with open(first_page_pdf, 'wb') as first_page_pdf_file:
         writer.write(first_page_pdf_file)
     
