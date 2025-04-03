@@ -21,18 +21,24 @@
     <img src="https://img.shields.io/badge/-CSS3-1572B6.svg?logo=css3&style=flat">
     <img src="https://img.shields.io/badge/-Github%20Actions-181717.svg?logo=github&style=popout">
     <img src="https://img.shields.io/badge/-Azure-2560E0.svg?logo=azure-pipelines&style=popout">
+    <img src="https://img.shields.io/badge/Azure%20Web%20App-blue?style=flat" alt="Badge">
+    <img src="https://img.shields.io/badge/Azure%20Document%20Intelligence-4fc08d?style=flat" alt="Badge">
 </p>
 
 ## 動作環境
 | 言語・フレームワーク  | バージョン |
 | --------------------- | ---------- |
 | Python                | 3.9        |
+| azure-ai-documentintelligence | 1.0.2        |
+| azure-core            | 1.32.0     |
 | beautifulsoup4        | 4.12.3     |
 | flask                 | 3.0.3      |
 | Jmap                  | 0.0.1      |
 | matplotlib            | 3.8.4      |
 | numpy                 | 1.26.4     |
 | pandas                | 2.2.2      |
+| PyPDF2                | 3.0.1      |
+| python-dotenv         | 1.0.1      |
 | requests              | 2.32.2     |
 | statsmodels           | 0.14.2     |
 
@@ -41,33 +47,37 @@
 ## ディレクトリ構成
 ```txt
 ./
-├─ .github/                 # GitHub関連の設定ファイルやワークフロー
+├─ .github/                               # GitHub関連の設定ファイルやワークフロー
 ├─ data/                    
-│   ├─ BloodDonation.csv    # 献血者数のデータ
-│   ├─ BloodRoom.csv        # 各献血ルームのデータ
-│   ├─ BloodStock_.csv      # 最新の血液在庫データ
-│   └─ graph.csv            # 可視化用に加工されたデータ
-├─ module/                  
-│   ├─ predict.py           # 献血者数の予測モデル
-│   └─ scrape.py            # 最新の献血在庫のスクレイピング
-├─ notebooks/               # データ分析とモデル検証用ファイル
-│   ├─ analyze.ipynb        # 変動成分の分解、定常性検定、相関分析と結果の作図
-│   ├─ model.ipynb          # SARIMAモデルの構築と評価
-│   └─ visualization.ipynb  # データの可視化と結果の作図
-├─ static/                  # 静的ファイル
+│   ├─ BloodDonation.csv                  # 献血者数のデータ
+│   ├─ BloodRoom.csv                      # 各献血ルームのデータ
+│   ├─ BloodStock_.csv                    # 最新の血液在庫データ
+│   ├─ graph.csv                          # 可視化用に加工されたデータ
+│   └─ jrc_blood_donation_report_raw.pdf  # 日本赤十字社が公開している献血者数速報のPDF（生データ）
+├─ module/
+│   ├─ download.py                        # 献血者数速報PDFのダウンロード
+│   ├─ ocr.py                             # PDFからテキストを抽出するOCR処理           
+│   ├─ predict.py                         # 献血者数の予測モデル
+│   └─ scrape.py                          # 最新の献血在庫のスクレイピング
+├─ notebooks/                             # データ分析とモデル検証用ファイル
+│   ├─ analyze.ipynb                      # 変動成分、定常性、相関分析と結果の作図
+│   ├─ model.ipynb                        # SARIMAモデルの構築と評価
+│   └─ visualization.ipynb                # データの可視化と結果の作図
+├─ static/                                # 静的ファイル
 │   ├─ css/                 
 │   ├─ images/              
 │   └─ scripts/            
-├─ templates/               # HTMLテンプレートファイル
-├─ app.py                   # Flaskアプリケーションのエントリーポイント
+├─ templates/                             # HTMLテンプレートファイル
+├─ app.py                                 # Flaskアプリケーションのエントリーポイント
 ├─ README.md                
-└─ requirements.txt         # パッケージのリスト
+└─ requirements.txt                       # パッケージのリスト
 ```
 
 ## データファイル
 - [BloodDonation.csv](./data/BloodDonation.csv) :　2017年1月からの47都道府県ごとの献血者数
 
-    これらのデータは[日本赤十字社 数値で見る献血事業](https://www.jrc.or.jp/donation/blood/data/)より取得しています。
+    これらのデータは[日本赤十字社 | 献血者数・供給本数速報
+](https://www.jrc.or.jp/donation/blood/data/)より取得しています。
 
     ![BloodDonation.csv_header](https://github.com/user-attachments/assets/980fdd2a-f60d-4f1b-81c7-ff6d273791a0)
 
@@ -104,5 +114,11 @@
     近畿ブロック : [日本赤十字社 近畿ブロック血液センター](https://www.bs.jrc.or.jp/kk/bbc/index.html)<br>
     中四国ブロック : [日本赤十字社 中四国ブロック血液センター](https://www.bs.jrc.or.jp/csk/bbc/index.html)<br>
     九州ブロック : [日本赤十字社 九州ブロック血液センター](https://www.bs.jrc.or.jp/bc9/bbc/index.html)<br>
+
+- [jrc_blood_donation_report_raw.pdf](./data/jrc_blood_donation_report_raw.pdf) :　日本赤十字社が公開している最新の全国血液センター献血者数速報の1ページ目（1 献血方法別献血者数）
+
+    このPDFファイルは[日本赤十字社 | 献血者数・供給本数速報
+](https://www.jrc.or.jp/donation/blood/data/)より取得しています。
+
 
 <p align="right">(<a href="#top">トップへ</a>)</p>
