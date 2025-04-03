@@ -16,7 +16,7 @@ endpoint = os.getenv('AZURE_DOCUMENT_INTELLIGENCE_ENDPOINT')
 key = os.getenv('AZURE_DOCUMENT_INTELLIGENCE_KEY')
 model_id = os.getenv('AZURE_DOCUMENT_INTELLIGENCE_MODEL_ID')
 
-target_file_path = "../data/row_data.pdf"
+target_file_path = "../data/jrc_blood_donation_report_raw.pdf"
 output_file_path = "../data/BloodDonation.csv"
 
 def ocr():
