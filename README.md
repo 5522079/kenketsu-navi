@@ -90,32 +90,32 @@
   3. prefecture_id：各都道府県に割り当てた固有の識別番号。<br>
     1 から 47 の値。各都道府県のコードは[都道府県コードの早見表](https://tundra-bugle-bc4.notion.site/2f462cc8750948878dbfe143640f33ab?pvs=4)を参照してください。
 
-  4. blood_donors：総献血者数
+  4. `blood_donors`：総献血者数
 
-  5. whole_blood_donation：全血献血（200mL・400mL 献血）の献血者数<br>
+  5. `whole_blood_donation`：全血献血（200mL・400mL 献血）の献血者数<br>
 
-  6. 200mL_blood_donation：200mL 献血者数
+  6. `200mL_blood_donation`：200mL 献血者数
 
-  7. 400mL_blood_donation：400mL 献血者数
+  7. `400mL_blood_donation`：400mL 献血者数
 
-  8.  component_blood_donation：成分献血（血漿成分・血小板成分献血）の献血者数<br>
+  8. `component_blood_donation`：成分献血（血漿成分・血小板成分献血）の献血者数<br>
 
-  9.  PPP_blood_donation：血漿成分献血献血者数
+  9. `PPP_blood_donation`：血漿成分献血献血者数
 
-  10.  PC_blood_donation：血小板成分献血者数
+  10. `PC_blood_donation`：血小板成分献血者数
 
 - [BloodStock_.csv](./data/) :　最新の血液在庫状況
 
     各地域ごとの赤十字血液センターの公式ウェブサイトより献血状況を取得しています。
 
-    北海道ブロック : [日本赤十字社 北海道赤十字血液センター](https://www.bs.jrc.or.jp/hkd/hokkaido/index.html)<br>
-    東北ブロック : [日本赤十字社 東北ブロック血液センター](https://www.bs.jrc.or.jp/th/bbc/index.html)<br>
-    関東甲信越ブロック : [日本赤十字社 関東甲信越ブロック血液センター](https://www.bs.jrc.or.jp/ktks/bbc/index.html)<br>
-    近畿ブロック : [日本赤十字社 近畿ブロック血液センター](https://www.bs.jrc.or.jp/kk/bbc/index.html)<br>
-    中四国ブロック : [日本赤十字社 中四国ブロック血液センター](https://www.bs.jrc.or.jp/csk/bbc/index.html)<br>
-    九州ブロック : [日本赤十字社 九州ブロック血液センター](https://www.bs.jrc.or.jp/bc9/bbc/index.html)<br>
+    北海道ブロック : [日本赤十字社 | 北海道赤十字血液センター](https://www.bs.jrc.or.jp/hkd/hokkaido/index.html)<br>
+    東北ブロック : [日本赤十字社 | 東北ブロック血液センター](https://www.bs.jrc.or.jp/th/bbc/index.html)<br>
+    関東甲信越ブロック : [日本赤十字社 | 関東甲信越ブロック血液センター](https://www.bs.jrc.or.jp/ktks/bbc/index.html)<br>
+    近畿ブロック : [日本赤十字社 | 近畿ブロック血液センター](https://www.bs.jrc.or.jp/kk/bbc/index.html)<br>
+    中四国ブロック : [日本赤十字社 | 中四国ブロック血液センター](https://www.bs.jrc.or.jp/csk/bbc/index.html)<br>
+    九州ブロック : [日本赤十字社 | 九州ブロック血液センター](https://www.bs.jrc.or.jp/bc9/bbc/index.html)<br>
 
-- [jrc_blood_donation_report_raw.pdf](./data/jrc_blood_donation_report_raw.pdf) :　日本赤十字社が公開している最新の全国血液センター献血者数速報の1ページ目（1 献血方法別献血者数）
+- [jrc_blood_donation_report_raw.pdf](./data/jrc_blood_donation_report_raw.pdf) :　日本赤十字社が公開している最新の全国血液センター献血者数速報の1ページ目（献血方法別献血者数）
 
     このPDFファイルは[日本赤十字社 | 献血者数・供給本数速報
 ](https://www.jrc.or.jp/donation/blood/data/)より取得しています。
