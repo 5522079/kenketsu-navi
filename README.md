@@ -6,7 +6,13 @@
 
 このプロジェクトは、献血者数の推移を予測するモデルの開発とWebサイトの運営を通じて、必要な血液量の適切な確保に貢献することを目指しています。
 
-予測結果を[献血ナビ](https://kenketsu-navi-bvf7hwdne8gyaqav.japaneast-01.azurewebsites.net/)で公開しています。また、[Qiita](https://qiita.com/5522079/items/8a6b0ceac8d81f053ca1)にプログラムの詳細な内容を記事にしています。<br>
+予測結果を[献血ナビ](https://kenketsu-navi-bvf7hwdne8gyaqav.japaneast-01.azurewebsites.net/)で公開しています。
+
+> [!IMPORTANT]
+> Azureの料金プランの都合上、アクセス時にコールドスタートが発生し、コンテンツの表示に時間がかかる場合があります。ご了承ください。
+
+また、[Qiita](https://qiita.com/5522079/items/8a6b0ceac8d81f053ca1)にプログラムの詳細な内容を記事にしています。<br>
+
 
 ## 使用技術
 <p style="display: inline">
@@ -81,13 +87,13 @@
 
     ![BloodDonation.csv_header](https://github.com/user-attachments/assets/980fdd2a-f60d-4f1b-81c7-ff6d273791a0)
 
-  1. year：西暦<br>
+  1. `year`：西暦<br>
     2017 から 2025 までの値。
 
-  2. month：月<br>
+  2. `month`：月<br>
     1 から 12 までの値。
 
-  3. prefecture_id：各都道府県に割り当てた固有の識別番号。<br>
+  3. `prefecture_id`：各都道府県に割り当てた固有の識別番号。<br>
     1 から 47 の値。各都道府県のコードは[都道府県コードの早見表](https://tundra-bugle-bc4.notion.site/2f462cc8750948878dbfe143640f33ab?pvs=4)を参照してください。
 
   4. `blood_donors`：総献血者数
