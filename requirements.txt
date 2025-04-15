@@ -4,9 +4,13 @@ beautifulsoup4
 requests
 pypdf2
 
+ipykernel
 pandas
+numpy==1.26.4
 matplotlib
 statsmodels
+pmdarima
+japanize_matplotlib
 
 python-dotenv
 azure-ai-documentintelligence
