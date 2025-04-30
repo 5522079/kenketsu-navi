@@ -202,5 +202,5 @@ def load_room(prefecture_id):
             rooms_detail.append(room[1:])
     return rooms_detail
 
-if __name__ == '__main__':
-    app.run(debug=True)
+# if __name__ == '__main__':
+#     app.run(debug=True)
