@@ -3,19 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>献血ナビ</title>
+    <meta name="description" content="献血ナビは全国の献血状況、献血者数予測、血液在庫情報を提供する献血情報ポータルサイトです。献血に関する基礎知識や近くの献血ルーム・献血バスの探し方まで、献血活動を身近にします。">
+    <meta name="keywords" content="献血,献血情報,献血ナビ,血液型,献血ルーム,献血バス,血液在庫,AI予測">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="献血ナビ運営チーム">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <meta property="og:title" content="献血ナビ">
     <meta property="og:type" content="website">
     <meta property="og:description" content="献血に関する情報をわかりやすく提供し、誰もが簡単に献血活動に参加できるようサポートすることを目指して活動しています。">
     <meta property="og:url" content="https://kenketsu-navi-bvf7hwdne8gyaqav.japaneast-01.azurewebsites.net/">
     <meta property="og:site_name" content="献血ナビ｜未来のために、今献血を考える">
     <meta property="og:image" content="../static/images/favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:locale" content="ja_JP">
+
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.0/css/all.css">
     <link rel="stylesheet" href="../static/css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="shortcut icon" href="../static/images/favicons/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="../static/images/favicons/apple-touch-icon-180x180.png" sizes="180x180">
     <link rel="icon" type="image/png" href="../static/images/favicons/android-chrome-192x192.png" sizes="192x192">
+    <link rel="preload" href="../static/images/logo.png" as="image">
+    <link rel="canonical" href="https://kenketsu-navi-bvf7hwdne8gyaqav.japaneast-01.azurewebsites.net/">
+    
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-CZJWDEN2W5"></script>
     <script>
@@ -25,10 +37,39 @@
 
       gtag('config', 'G-CZJWDEN2W5');
     </script>
+
+    <!-- 構造化データ -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "献血ナビ",
+        "url": "https://kenketsu-navi-bvf7hwdne8gyaqav.japaneast-01.azurewebsites.net/",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://kenketsu-navi-bvf7hwdne8gyaqav.japaneast-01.azurewebsites.net/search?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "献血ナビ",
+        "url": "https://kenketsu-navi-bvf7hwdne8gyaqav.japaneast-01.azurewebsites.net/",
+        "logo": "https://kenketsu-navi-bvf7hwdne8gyaqav.japaneast-01.azurewebsites.net/static/images/logo.png",
+        "description": "献血に関する情報をわかりやすく提供し、誰もが簡単に献血活動に参加できるようサポートすることを目指して活動しています。",
+        "sameAs": [
+          "https://twitter.com/kenketsu_navi",
+          "https://www.facebook.com/kenketsunavi"
+        ]
+      }
+    </script>
 </head>
 <body>
     <header>
-    <a href="/"><img src="../static/images/logo.png" alt="Image description" /></a>
+    <a href="/"><img src="../static/images/logo.png" alt="献血ナビのロゴ" /></a>
     <div class="header-items">
             <ul>
                 <li><a class="header-item" href="/about">このサイトについて</a></li>
@@ -57,21 +98,21 @@
         <section class="service">
             <div class="box" onClick="window.location.href='/nationwide';" style="cursor: pointer;">
               <div class="image-container">
-                <img src="../static/images/service-ai.png" alt="Image description" />
+                <img src="../static/images/service-ai.png" alt="AIによる献血者数予測サービス" />
               </div>
               <h2>献血者数の予測</h2>
               <p>献血者数を予測するモデルで3ヶ月先までの献血者数の推移を予測します。</p>
             </div>
             <div class="box" onClick="window.location.href='/nationwide#status';" style="cursor: pointer;">
               <div class="image-container">
-                <img src="../static/images/service-map.png" alt="Image description" />
+                <img src="../static/images/service-map.png" alt="全国の献血状況マップ" />
               </div>
               <h2>現在の献血状況</h2>
               <p>最新の血液の在庫情報をまとめています。</p>
             </div>
             <div class="box" onClick="window.location.href='/nationwide#blood_data';" style="cursor: pointer;">
               <div class="image-container">
-                <img src="../static/images/service-graph.png" alt="Image description" />
+                <img src="../static/images/service-graph.png" alt="献血データグラフ" />
               </div>
               <h2>数字で見る献血</h2>
               <p>今までの献血に関するデータを数字でご紹介します。</p>
@@ -101,8 +142,9 @@
         <section class="about-us">
             <div class="box">
               <p>私たちは当サイトの運営を通じて、過不足のない献血供給に貢献できることを目指しています。</p>
+              <p>※「献血ナビ」は日本赤十字社の公式サイトではなく、学生団体が運営する献血情報ポータルサイトです。サイト内の意見や情報は日本赤十字社の公式見解ではありません。</p>
               <div class="image-container">
-                <img src="../static/images/about-us.jpeg" alt="Image description" />
+                <img src="../static/images/about-us.jpeg" alt="献血ナビ運営チーム" />
               </div>
               <a class="about-more" href="/about#us">詳しく見る</a>
             </div>

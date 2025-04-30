@@ -3,21 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <title>献血ナビ</title>
+    <meta name="description" content="献血ナビは全国の献血状況、献血者数予測、血液在庫情報を提供する献血情報ポータルサイトです。献血に関する基礎知識や近くの献血ルーム・献血バスの探し方まで、献血活動を身近にします。本ページでは献血状況、献血者数予測、血液在庫情報の都道府県マップを提供します。">
+    <meta name="keywords" content="献血,献血情報,献血ナビ,血液型,献血ルーム,献血バス,血液在庫,AI予測">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="献血ナビ運営チーム">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <meta property="og:title" content="献血ナビ">
     <meta property="og:type" content="website">
-    <meta property="og:description" content="献血に関する情報をわかりやすく提供し、誰もが簡単に献血活動に参加できるようサポートすることを目指して活動しています。">
+    <meta property="og:description" content="献血に関する情報をわかりやすく提供し、誰もが簡単に献血活動に参加できるようサポートすることを目指して活動しています。本ページでは献血状況、献血者数予測、血液在庫情報の都道府県マップを提供します。">
     <meta property="og:url" content="https://kenketsu-navi-bvf7hwdne8gyaqav.japaneast-01.azurewebsites.net/">
     <meta property="og:site_name" content="献血ナビ｜未来のために、今献血を考える">
     <meta property="og:image" content="../static/images/favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:locale" content="ja_JP">
+
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.0/css/all.css">
     <link rel="stylesheet" href="../static/css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="shortcut icon" href="../static/images/favicons/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="../static/images/favicons/apple-touch-icon-180x180.png" sizes="180x180">
     <link rel="icon" type="image/png" href="../static/images/favicons/android-chrome-192x192.png" sizes="192x192">
-    <script type="text/javascript" src="{{ url_for('static', filename='scripts/js/jmap.js') }}"></script>
+    <link rel="preload" href="../static/images/logo.png" as="image">
+    <link rel="canonical" href="https://kenketsu-navi-bvf7hwdne8gyaqav.japaneast-01.azurewebsites.net/prefecture">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CZJWDEN2W5"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-CZJWDEN2W5');
+    </script>
+
+    <!-- 構造化データ -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "献血ナビ",
+        "url": "https://kenketsu-navi-bvf7hwdne8gyaqav.japaneast-01.azurewebsites.net/",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://kenketsu-navi-bvf7hwdne8gyaqav.japaneast-01.azurewebsites.net/search?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "献血ナビ",
+        "url": "https://kenketsu-navi-bvf7hwdne8gyaqav.japaneast-01.azurewebsites.net/",
+        "logo": "https://kenketsu-navi-bvf7hwdne8gyaqav.japaneast-01.azurewebsites.net/static/images/logo.png",
+        "description": "献血に関する情報をわかりやすく提供し、誰もが簡単に献血活動に参加できるようサポートすることを目指して活動しています。",
+        "sameAs": [
+          "https://twitter.com/kenketsu_navi",
+          "https://www.facebook.com/kenketsunavi"
+        ]
+      }
+    </script>
+
     <script type = "text/javascript">
         $(document).ready(function() {
             $('#pred-map').jmap({
@@ -42,6 +91,7 @@
             });
         });
     </script>
+
     <script type = "text/javascript">
         $(document).ready(function() {
             $('#status-map').jmap({
@@ -65,6 +115,7 @@
             });
         });
     </script>
+
     <script type = "text/javascript">
         $(function(){
             var countElm = $('.count'),
@@ -94,19 +145,10 @@
             });
         });
     </script>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CZJWDEN2W5"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-CZJWDEN2W5');
-    </script>
 </head>
 <body>
     <header>
-        <a href="/"><img src="../static/images/logo.png" alt="Image description" /></a>
+        <a href="/"><img src="../static/images/logo.png" alt="献血ナビのロゴ" /></a>
         <div class="header-items">
                 <ul>
                     <li><a class="header-item" href="/about">このサイトについて</a></li>
@@ -218,21 +260,21 @@
             <div class="box">
                 <h2>これまで献血に協力していただいた人数</h2>
                 <div class="image-container">
-                    <img src="../static/images/data-people.png" alt="Image description" />
+                    <img src="../static/images/data-people.png" alt="これまで献血に協力していただいた人数" />
                 </div>
                 <p><span class="count" data="{{total_blood_donors}}">0</span>人</p>
             </div>
             <div class="box">
                 <h2>これまでに献血された血液の総量</h2>
                 <div class="image-container">
-                    <img src="../static/images/data-blood.png" alt="Image description" />
+                    <img src="../static/images/data-blood.png" alt="これまでに献血された血液の総量" />
                 </div>
                 <p><span class="count" data="{{total_blood}}">0</span>kL</p>
             </div>
             <div class="box">
                 <h2>献血ルームの総数</h2>
                 <div class="image-container">
-                    <img src="../static/images/data-room.png" alt="Image description" />
+                    <img src="../static/images/data-room.png" alt="献血ルームの総数" />
                 </div>
                 <p><span class="count" data="{{total_rooms}}">0</span>箇所</p>
             </div>
