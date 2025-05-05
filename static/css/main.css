@@ -588,7 +588,7 @@ footer {
 @media screen and (max-width: 768px) {
   .top-wrapper {
     padding: 0;
-    background-image: url(../images/top-wrapper.jpg);
+    background-image: url(../images/top-wrapper-m.jpg);
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
