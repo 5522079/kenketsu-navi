@@ -85,6 +85,8 @@
     これらのデータは[日本赤十字社 | 献血者数・供給本数速報
 ](https://www.jrc.or.jp/donation/blood/data/)より取得しています。
 
+    また、[2025年3月分のデータから](https://github.com/5522079/kenketsu-navi/commit/a419b87af7b663257f3195598095b9b47240773c)Azure Document Intelligenceを導入し、手動でのデータ追加ではなくOCRによる自動インポートを行っています（完全なファクトチェックは実施していません）。
+
     ![BloodDonation.csv_header](https://github.com/user-attachments/assets/980fdd2a-f60d-4f1b-81c7-ff6d273791a0)
 
   1. `year`：西暦<br>
