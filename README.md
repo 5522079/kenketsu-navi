@@ -59,7 +59,7 @@
 │   ├─ BloodRoom.csv                      # 各献血ルームのデータ
 │   ├─ BloodStock_.csv                    # 最新の血液在庫データ
 │   ├─ graph.csv                          # 可視化用に加工されたデータ
-│   └─ jrc_blood_donation_report_raw.pdf  # 日本赤十字社が公開している献血者数速報のPDF（生データ）
+│   └─ jrc_blood_donation_report_raw.pdf  # 日本赤十字社が公開している献血速報のPDF（オープンデータ）
 ├─ module/
 │   ├─ download.py                        # 献血者数速報PDFのダウンロード
 │   ├─ ocr.py                             # PDFからテキストを抽出するOCR処理           
