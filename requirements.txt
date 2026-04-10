@@ -1,16 +1,12 @@
-Flask
-
+Jinja2
 beautifulsoup4
 requests
 pypdf2
-
-ipykernel
 pandas
 numpy
 matplotlib
 statsmodels
 pmdarima
 japanize_matplotlib
-
 python-dotenv
 azure-ai-documentintelligence
