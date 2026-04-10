@@ -6,12 +6,7 @@
 
 このプロジェクトは、献血者数の推移を予測するモデルの開発とWebサイトの運営を通じて、必要な血液量の適切な確保に貢献することを目指しています。
 
-予測結果を[献血ナビ](https://kenketsu-navi-bvf7hwdne8gyaqav.japaneast-01.azurewebsites.net/)で公開しています。
-
-> [!IMPORTANT]
-> Azureの料金プランの都合上、アクセス時にコールドスタートが発生し、コンテンツの表示に時間がかかる場合があります。ご了承ください。
-
-また、[Qiita](https://qiita.com/5522079/items/8a6b0ceac8d81f053ca1)にプログラムの詳細な内容を記事にしています。<br>
+予測結果は GitHub Pages で静的サイトとして公開しています。生成物は `site/` に出力されます。
 
 
 ## 使用技術
@@ -26,19 +21,15 @@
     <img src="https://img.shields.io/badge/-HTML5-333.svg?logo=html5&style=flat">
     <img src="https://img.shields.io/badge/-CSS3-1572B6.svg?logo=css3&style=flat">
     <img src="https://img.shields.io/badge/-Github%20Actions-181717.svg?logo=github&style=popout">
-    <img src="https://img.shields.io/badge/-Azure-2560E0.svg?logo=azure-pipelines&style=popout">
-    <img src="https://img.shields.io/badge/Azure%20Web%20App-blue?style=flat" alt="Badge">
-    <img src="https://img.shields.io/badge/Azure%20Document%20Intelligence-4fc08d?style=flat" alt="Badge">
+    <img src="https://img.shields.io/badge/-GitHub%20Pages-222222.svg?logo=githubpages&style=popout">
 </p>
 
 ## 動作環境
 | 言語・フレームワーク  | バージョン |
 | --------------------- | ---------- |
-| Python                | 3.9        |
-| azure-ai-documentintelligence | 1.0.2        |
-| azure-core            | 1.32.0     |
+| Python                | 3.12        |
 | beautifulsoup4        | 4.12.3     |
-| flask                 | 3.0.3      |
+| Jinja2                | 3.0        |
 | Jmap                  | 0.0.1      |
 | matplotlib            | 3.8.4      |
 | numpy                 | 1.26.4     |
@@ -74,9 +65,10 @@
 │   ├─ images/              
 │   └─ scripts/            
 ├─ templates/                             # HTMLテンプレートファイル
-├─ app.py                                 # Flaskアプリケーションのエントリーポイント
+├─ build_static_site.py                   # GitHub Pages用の静的HTML生成
+├─ site_data.py                           # ページ生成で使うデータ処理
 ├─ README.md                
-└─ requirements.txt                       # パッケージのリスト
+└─ requirements.txt                       # ライブラリのリスト
 ```
 
 ## データファイル
