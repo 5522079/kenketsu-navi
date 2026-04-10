@@ -12,34 +12,34 @@
     <meta property="og:title" content="献血ナビ">
     <meta property="og:type" content="website">
     <meta property="og:description" content="献血に関する情報をわかりやすく提供し、誰もが簡単に献血活動に参加できるようサポートすることを目指して活動しています。本ページでは献血状況、献血者数予測、血液在庫情報の都道府県マップを提供します。">
-    <meta property="og:url" content="https://kenketsu-navi-bvf7hwdne8gyaqav.japaneast-01.azurewebsites.net/">
+    <meta property="og:url" content="{{ site_url }}">
     <meta property="og:site_name" content="献血ナビ｜未来のために、今献血を考える">
-    <meta property="og:image" content="../static/images/favicon.ico">
+    <meta property="og:image" content="static/images/favicons/favicon.ico">
     <meta property="og:locale" content="ja_JP">
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="献血ナビ" />
     <meta name="twitter:description" content="献血ナビは全国の献血状況、献血者数予測、血液在庫情報を提供する献血情報ポータルサイトです。献血に関する基礎知識や近くの献血ルーム・献血バスの探し方まで、献血活動を身近にします。" />
-    <meta name="twitter:image" content="https://kenketsu-navi-bvf7hwdne8gyaqav.japaneast-01.azurewebsites.net/static/images/logo.png" />
+    <meta name="twitter:image" content="static/images/logo.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="献血ナビ" />
     <meta name="twitter:description" content="献血ナビは全国の献血状況、献血者数予測、血液在庫情報を提供する献血情報ポータルサイトです。献血に関する基礎知識や近くの献血ルーム・献血バスの探し方まで、献血活動を身近にします。" />
-    <meta name="twitter:image" content="https://kenketsu-navi-bvf7hwdne8gyaqav.japaneast-01.azurewebsites.net/static/images/favicons/favicon.ico" />
+    <meta name="twitter:image" content="static/images/favicons/favicon.ico" />
 
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='scripts/js/jmap.js') }}"></script>
+    <script type="text/javascript" src="static/scripts/js/jmap.js"></script>
     
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.0/css/all.css">
-    <link rel="stylesheet" href="../static/css/main.css">
+    <link rel="stylesheet" href="static/css/main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="shortcut icon" href="../static/images/favicons/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="../static/images/favicons/apple-touch-icon-180x180.png" sizes="180x180">
-    <link rel="icon" type="image/png" href="../static/images/favicons/android-chrome-192x192.png" sizes="192x192">
-    <link rel="preload" href="../static/images/logo.png" as="image">
-    <link rel="canonical" href="https://kenketsu-navi-bvf7hwdne8gyaqav.japaneast-01.azurewebsites.net/prefecture">
+    <link rel="shortcut icon" href="static/images/favicons/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="static/images/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+    <link rel="icon" type="image/png" href="static/images/favicons/android-chrome-192x192.png" sizes="192x192">
+    <link rel="preload" href="static/images/logo.png" as="image">
+    <link rel="canonical" href="{{ canonical_url }}">
     
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-CZJWDEN2W5"></script>
@@ -57,12 +57,7 @@
         "@context": "https://schema.org",
         "@type": "WebSite",
         "name": "献血ナビ",
-        "url": "https://kenketsu-navi-bvf7hwdne8gyaqav.japaneast-01.azurewebsites.net/",
-        "potentialAction": {
-          "@type": "SearchAction",
-          "target": "https://kenketsu-navi-bvf7hwdne8gyaqav.japaneast-01.azurewebsites.net/search?q={search_term_string}",
-          "query-input": "required name=search_term_string"
-        }
+                "url": "{{ site_url }}"
       }
     </script>
     <script type="application/ld+json">
@@ -70,8 +65,8 @@
         "@context": "https://schema.org",
         "@type": "Organization",
         "name": "献血ナビ",
-        "url": "https://kenketsu-navi-bvf7hwdne8gyaqav.japaneast-01.azurewebsites.net/",
-        "logo": "https://kenketsu-navi-bvf7hwdne8gyaqav.japaneast-01.azurewebsites.net/static/images/logo.png",
+        "url": "{{ site_url }}",
+        "logo": "{{ logo_url }}",
         "description": "献血に関する情報をわかりやすく提供し、誰もが簡単に献血活動に参加できるようサポートすることを目指して活動しています。",
         "sameAs": [
           "https://twitter.com/kenketsu_navi",
@@ -88,13 +83,9 @@
                 heatmapLabelUnit: '%',
                 heatmapConditions: ["<=-6", "<0",  ">=0", ">=6"],
                 heatmapColors: ["#4394c3", "#d1e5f0", "#fedbc7", "#d65f4e"], 
-                onSelect: function(e, data) {
-                    // フォームに自動入力
-                    $('#prefecture_id').val(data.code);
-                    $('#prefecture_name').val(data.name);
-
-                    // フォームを自動送信
-                    $('#prefecture_form').submit();
+                    onSelect: function(e, data) {
+                    var prefectureId = String(data.code).padStart(2, '0');
+                    window.location.href = 'prefecture-' + prefectureId + '.html';
                 },
                 areas : [
                     {% for data in predict_areas_data %}
@@ -112,13 +103,9 @@
                 showInfobox: true,
                 heatmapConditions: ["<9", ">=9",  ">=18", ">=27"],
                 heatmapColors: ["#4394c3", "#d1e5f0", "#fedbc7", "#d65f4e"], 
-                onSelect: function(e, data) {
-                    // フォームに自動入力
-                    $('#prefecture_id').val(data.code);
-                    $('#prefecture_name').val(data.name);
-
-                    // フォームを自動送信
-                    $('#prefecture_form').submit();
+                    onSelect: function(e, data) {
+                    var prefectureId = String(data.code).padStart(2, '0');
+                    window.location.href = 'prefecture-' + prefectureId + '.html';
                 },
                 areas : [
                     {% for data in status_areas_data %}
@@ -161,11 +148,10 @@
 </head>
 <body>
     <header>
-        <a href="/"><img src="../static/images/logo.png" alt="献血ナビのロゴ" /></a>
+        <a href="./"><img src="static/images/logo.png" alt="献血ナビのロゴ" /></a>
         <div class="header-items">
                 <ul>
-                    <li><a class="header-item" href="/about">このサイトについて</a></li>
-                    <li><a class="header-item" href="/about#contact">お問い合わせ</a></li>
+                    <li><a class="header-item" href="about.html">このサイトについて</a></li>
                 </ul>
                 <div class="hamburger-menu">
                     <input type="checkbox" id="overlay-input" />
@@ -174,9 +160,8 @@
                     </label>
                     <div id="overlay">
                         <ul>
-                            <li><a href="/">トップページ</a></li>
-                            <li><a href="/about">このサイトについて</a></li>
-                            <li><a href="/about#contact">お問い合わせ</a></li>
+                            <li><a href="./">トップページ</a></li>
+                            <li><a href="about.html">このサイトについて</a></li>
                         </ul>
                     </div>
                 </div>
@@ -192,10 +177,6 @@
         <section class="predict">
             <div class="box">
                 <p>2017年から2024年までの献血者数の推移を学習した予測モデルが、3か月先までの献血者数を予測し、適切なタイミングでの献血をサポートします。</p>
-                <form id="prefecture_form" action="/prefecture" method="POST">
-                    <input type="hidden" id="prefecture_id" name="prefecture_id">
-                    <input type="hidden" id="prefecture_name" name="prefecture_name">
-                </form>
                 <div id="pred-map">
                     <div class="jmap-infobox">
                         <p>地図をクリックすると、「都道府ごとのデータ」がご覧いただけます。</p>
@@ -232,10 +213,6 @@
         <section class="status">
             <div class="box">
                 <p>日本赤十字社が公開している現在の献血状況をまとめ、都道府県ごとに正確な献血状況を把握することができます。</p>
-                <form id="prefecture_form" action="/prefecture" method="POST">
-                    <input type="hidden" id="prefecture_id" name="prefecture_id">
-                    <input type="hidden" id="prefecture_name" name="prefecture_name">
-                </form>
                 <div id="status-map">
                     <div class="jmap-infobox">
                         <p>地図をクリックすると、「都道府ごとのデータ」がご覧いただけます。</p>
@@ -273,21 +250,21 @@
             <div class="box">
                 <h2>これまで献血に協力していただいた人数</h2>
                 <div class="image-container">
-                    <img src="../static/images/data-people.png" alt="これまで献血に協力していただいた人数" />
+                    <img src="static/images/data-people.png" alt="これまで献血に協力していただいた人数" />
                 </div>
                 <p><span class="count" data="{{total_blood_donors}}">0</span>人</p>
             </div>
             <div class="box">
                 <h2>これまでに献血された血液の総量</h2>
                 <div class="image-container">
-                    <img src="../static/images/data-blood.png" alt="これまでに献血された血液の総量" />
+                    <img src="static/images/data-blood.png" alt="これまでに献血された血液の総量" />
                 </div>
                 <p><span class="count" data="{{total_blood}}">0</span>kL</p>
             </div>
             <div class="box">
                 <h2>献血ルームの総数</h2>
                 <div class="image-container">
-                    <img src="../static/images/data-room.png" alt="献血ルームの総数" />
+                    <img src="static/images/data-room.png" alt="献血ルームの総数" />
                 </div>
                 <p><span class="count" data="{{total_rooms}}">0</span>箇所</p>
             </div>
@@ -295,9 +272,8 @@
     </div>
     <footer>
     <ul class="footer-items">
-        <li><a class="footer-item" href="/about">このサイトについて</a></li>
-        <li><a class="footer-item" href="/about#contact">お問い合わせ</a></li>
-        <li><a class="footer-item" href="/about#used">使用しているデータについて</a></li>
+        <li><a class="footer-item" href="about.html">このサイトについて</a></li>
+        <li><a class="footer-item" href="about.html#used">使用しているデータについて</a></li>
     </ul>
         <p class="copyright">© 2023-2026 献血ナビ</p>
     </footer>
